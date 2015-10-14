@@ -22,30 +22,63 @@
       <br> Это бесплатно и займет всего пару минут.</p>
     <p class="amg-outdate__text">После этого вы заметите, что интернет стал лучше!</p>
     <div class="amg-outdate__browsers-stack">
-      <a href="https://www.google.ru/chrome/browser/desktop/" target="_blank" title="Установите последнюю версию браузера Google Chrome" data-browser="Chrome" class="amg-outdate__browser"><img src="img/chrome-logo.png" alt="Установите последнюю версию браузера Google Chrome" class="amg-outdate__browser-logo" /><span class="amg-outdate__browser-name">Chrome</span></a>
+      <a href="https://www.google.ru/chrome/browser/desktop/" target="_blank" title="Установите последнюю версию браузера Google Chrome" data-browser="chrome" class="amg-outdate__browser"><img src="img/chrome-logo.png" alt="Установите последнюю версию браузера Google Chrome" class="amg-outdate__browser-logo" /><span class="amg-outdate__browser-name">Chrome</span></a>
       <a href="http://www.opera.com/ru" target="_blank" title="Установите последнюю версию браузера Opera"
-      data-browser="Opera" class="amg-outdate__browser"><img src="img/opera-logo.png" alt="Установите последнюю версию браузера Opera" class="amg-outdate__browser-logo" /><span class="amg-outdate__browser-name">Opera</span></a>
+      data-browser="opera" class="amg-outdate__browser"><img src="img/opera-logo.png" alt="Установите последнюю версию браузера Opera" class="amg-outdate__browser-logo" /><span class="amg-outdate__browser-name">Opera</span></a>
       <a href="http://windows.microsoft.com/ru-ru/internet-explorer/download-ie"
-      target="_blank" title="Установите последнюю версию браузера Microsoft Internet Explorer" data-browser="MSIE" class="amg-outdate__browser"><img src="img/ie-logo.png" alt="Установите последнюю версию браузера Microsoft Internet Explorer" style="width" class="amg-outdate__browser-logo" /><span class="amg-outdate__browser-name">IE/Edge</span></a>
+      target="_blank" title="Установите последнюю версию браузера Microsoft Internet Explorer" data-browser="Explorer" class="amg-outdate__browser"><img src="img/ie-logo.png" alt="Установите последнюю версию браузера Microsoft Internet Explorer" style="width" class="amg-outdate__browser-logo" /><span class="amg-outdate__browser-name">IE/Edge</span></a>
       <a href="https://www.mozilla.org/ru/firefox/new/"
-      target="_blank" title="Установите последнюю версию браузера Mozilla Firefox" data-browser="Firefox" class="amg-outdate__browser"><img src="img/firefox-logo.png" alt="Установите последнюю версию браузера Mozilla Firefox" class="amg-outdate__browser-logo" /><span class="amg-outdate__browser-name">Firefox</span></a>
+      target="_blank" title="Установите последнюю версию браузера Mozilla Firefox" data-browser="mozilla" class="amg-outdate__browser"><img src="img/firefox-logo.png" alt="Установите последнюю версию браузера Mozilla Firefox" class="amg-outdate__browser-logo" /><span class="amg-outdate__browser-name">Firefox</span></a>
       <a href="https://support.apple.com/downloads/safari" target="_blank"
-      title="Установите последнюю версию браузера Apple Safari" data-browser="Safari" class="amg-outdate__browser"><img src="img/safari-logo.png" alt="Установите последнюю версию браузера Apple Safari" class="amg-outdate__browser-logo" /><span class="amg-outdate__browser-name">Safari</span></a>
+      title="Установите последнюю версию браузера Apple Safari" data-browser="safari" class="amg-outdate__browser"><img src="img/safari-logo.png" alt="Установите последнюю версию браузера Apple Safari" class="amg-outdate__browser-logo" /><span class="amg-outdate__browser-name">Safari</span></a>
     </div>
     <button role="button" class="amg-outdate__btn-thx">Спасибо, меня все устраивает</button>
     <script>
-      BrowserDetect.init();
-
+      /** Detect browser with BrowserDetect and build browsers stack with pick up current
+       * @param {string} selector - CSS selector for browser block
+       * */
       function buildBrowsersStack(selector)
       {
         var browserLinks = document.querySelectorAll(selector);
         if (browserLinks.length)
         {
+          var _ua = window.navigator.userAgent;
+          var browser = {
+            version: (_ua.match(/.+(?:me|ox|on|rv|it|era|opr|ie)[\/: ]([\d.]+)/) || [0, '0'])[1],
+            opera: (/opera/i.test(_ua) || /opr/i.test(_ua)),
+            msie: (/msie/i.test(_ua) && !/opera/i.test(_ua) || /trident\//i.test(_ua)),
+            msie6: (/msie 6/i.test(_ua) && !/opera/i.test(_ua)),
+            msie7: (/msie 7/i.test(_ua) && !/opera/i.test(_ua)),
+            msie8: (/msie 8/i.test(_ua) && !/opera/i.test(_ua)),
+            msie9: (/msie 9/i.test(_ua) && !/opera/i.test(_ua)),
+            mozilla: /firefox/i.test(_ua),
+            chrome: /chrome/i.test(_ua),
+            safari: (!(/chrome/i.test(_ua)) && /webkit|safari|khtml/i.test(_ua)),
+            iphone: /iphone/i.test(_ua),
+            ipod: /ipod/i.test(_ua),
+            iphone4: /iphone.*OS 4/i.test(_ua),
+            ipod4: /ipod.*OS 4/i.test(_ua),
+            ipad: /ipad/i.test(_ua),
+            android: /android/i.test(_ua),
+            bada: /bada/i.test(_ua),
+            mobile: /iphone|ipod|ipad|opera mini|opera mobi|iemobile|android/i.test(_ua),
+            msie_mobile: /iemobile/i.test(_ua),
+            safari_mobile: /iphone|ipod|ipad/i.test(_ua),
+            opera_mobile: /opera mini|opera mobi/i.test(_ua),
+            opera_mini: /opera mini/i.test(_ua),
+            mac: /mac/i.test(_ua),
+            search_bot: /(yandex|google|stackrambler|aport|slurp|msnbot|bingbot|twitterbot|ia_archiver|facebookexternalhit)/i.test(_ua)
+          };
           for (var i = 0; i < browserLinks.length; i++)
           {
-            if (BrowserDetect.browser == browserLinks[i].dataset.browser)
+            for (var browserIs in browser)
             {
-              browserLinks[i].classList.add('amg-outdate__browser--isUsed');
+              if (browser[browserIs] == true && browserIs == browserLinks[i].getAttribute('data-browser'))
+              {
+                console.info(browserIs + ' ' + browser[browserIs]);
+                console.log(browserIs);
+                browserLinks[i].className += ' amg-outdate__browser--isUsed';
+              }
             }
           }
         }
