@@ -1,3 +1,1 @@
-# AstraMediaGroup Web Starter Kit
-
-...
+## Project readme

@@ -1,0 +1,56 @@
+<!-- Modal window that will be shown only for old browsers version-->
+<div role="alert" class="amg-outdate-wrapper">
+  <section role="article" class="amg-outdate">
+    <button role="button" aria-label="Close" class="amg-outdate__close">
+      <svg id="layer-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.4 21.4">
+        <style>
+          .amg-cross {
+            fill-rule: evenodd;
+            clip-rule: evenodd;
+          }
+        </style>
+        <path class="amg-cross" d="M20.7 0l.7.7L.8 21.4l-.7-.7L20.7 0z" />
+        <path class="amg-cross" d="M.7 0L0 .7l20.6 20.6.7-.7L.7 0z" /> </svg>
+    </button>
+    <h2 class="amg-outdate__title">Ваш браузер<span class="amg-outdate__title-more"> может больше</span></h2>
+    <p class="amg-outdate__text">Команда Astra Media Group постаралась сделать сайт
+      <br> удобным, понятным и красивым.</p>
+    <p class="amg-outdate__text">Однако используемая вами версия браузера
+      <br> может неправильно отображать сайты
+      <br> и портить вам удовольствие от работы.</p>
+    <p class="amg-outdate__text">Установите более современный браузер.
+      <br> Это бесплатно и займет всего пару минут.</p>
+    <p class="amg-outdate__text">После этого вы заметите, что интернет стал лучше!</p>
+    <div class="amg-outdate__browsers-stack">
+      <a href="https://www.google.ru/chrome/browser/desktop/" target="_blank" title="Установите последнюю версию браузера Google Chrome" data-browser="Chrome" class="amg-outdate__browser"><img src="img/chrome-logo.png" alt="Установите последнюю версию браузера Google Chrome" class="amg-outdate__browser-logo" /><span class="amg-outdate__browser-name">Chrome</span></a>
+      <a href="http://www.opera.com/ru" target="_blank" title="Установите последнюю версию браузера Opera"
+      data-browser="Opera" class="amg-outdate__browser"><img src="img/opera-logo.png" alt="Установите последнюю версию браузера Opera" class="amg-outdate__browser-logo" /><span class="amg-outdate__browser-name">Opera</span></a>
+      <a href="http://windows.microsoft.com/ru-ru/internet-explorer/download-ie"
+      target="_blank" title="Установите последнюю версию браузера Microsoft Internet Explorer" data-browser="MSIE" class="amg-outdate__browser"><img src="img/ie-logo.png" alt="Установите последнюю версию браузера Microsoft Internet Explorer" style="width" class="amg-outdate__browser-logo" /><span class="amg-outdate__browser-name">IE/Edge</span></a>
+      <a href="https://www.mozilla.org/ru/firefox/new/"
+      target="_blank" title="Установите последнюю версию браузера Mozilla Firefox" data-browser="Firefox" class="amg-outdate__browser"><img src="img/firefox-logo.png" alt="Установите последнюю версию браузера Mozilla Firefox" class="amg-outdate__browser-logo" /><span class="amg-outdate__browser-name">Firefox</span></a>
+      <a href="https://support.apple.com/downloads/safari" target="_blank"
+      title="Установите последнюю версию браузера Apple Safari" data-browser="Safari" class="amg-outdate__browser"><img src="img/safari-logo.png" alt="Установите последнюю версию браузера Apple Safari" class="amg-outdate__browser-logo" /><span class="amg-outdate__browser-name">Safari</span></a>
+    </div>
+    <button role="button" class="amg-outdate__btn-thx">Спасибо, меня все устраивает</button>
+    <script>
+      BrowserDetect.init();
+
+      function buildBrowsersStack(selector)
+      {
+        var browserLinks = document.querySelectorAll(selector);
+        if (browserLinks.length)
+        {
+          for (var i = 0; i < browserLinks.length; i++)
+          {
+            if (BrowserDetect.browser == browserLinks[i].dataset.browser)
+            {
+              browserLinks[i].classList.add('amg-outdate__browser--isUsed');
+            }
+          }
+        }
+      }
+      buildBrowsersStack('.amg-outdate__browser');
+    </script>
+  </section>
+</div>
