@@ -312,7 +312,7 @@
           <a href="http://www.opera.com/ru" target="_blank" title="Установите последнюю версию браузера Opera"
           data-browser="opera" class="amg-outdate__browser"><img src="img/opera-logo.png" alt="Установите последнюю версию браузера Opera" class="amg-outdate__browser-logo"><span class="amg-outdate__browser-name">Opera</span></a>
           <a href="http://windows.microsoft.com/ru-ru/internet-explorer/download-ie"
-          target="_blank" title="Установите последнюю версию браузера Microsoft Internet Explorer" data-browser="Explorer" class="amg-outdate__browser"><img src="img/ie-logo.png" alt="Установите последнюю версию браузера Microsoft Internet Explorer" style="width" class="amg-outdate__browser-logo"><span class="amg-outdate__browser-name">IE/Edge</span></a>
+          target="_blank" title="Установите последнюю версию браузера Microsoft Internet Explorer" data-browser="msie" class="amg-outdate__browser"><img src="img/ie-logo.png" alt="Установите последнюю версию браузера Microsoft Internet Explorer" style="width" class="amg-outdate__browser-logo"><span class="amg-outdate__browser-name">IE/Edge</span></a>
           <a href="https://www.mozilla.org/ru/firefox/new/"
           target="_blank" title="Установите последнюю версию браузера Mozilla Firefox" data-browser="mozilla" class="amg-outdate__browser"><img src="img/firefox-logo.png" alt="Установите последнюю версию браузера Mozilla Firefox" class="amg-outdate__browser-logo"><span class="amg-outdate__browser-name">Firefox</span></a>
           <a href="https://support.apple.com/downloads/safari" target="_blank"
@@ -320,56 +320,205 @@
         </div>
         <button role="button" class="amg-outdate__btn-thx">Спасибо, меня все устраивает</button>
         <script>
-          /** Detect browser with BrowserDetect and build browsers stack with pick up current
-           * @param {string} selector - CSS selector for browser block
+          /**
+           * Detect browser, browser version and OS
+           * @constructor
+           * @name detectBrowser
+           * @author Igor Timohin <timohin.i@gmail.com>
+           * @copyright Igor Timohin 2015
+           * @version 1.0.0
+           *
+           * @example
+           * userBrowserIs = new detectBrowser();
+           * console.log(userBrowserIs.getBrowser()); // chrome
+           * console.log(userBrowserIs.getOS()); // mac
+           * console.log(userBrowserIs.getVersion()); // 45.0.2454.93
            * */
-          function buildBrowsersStack(selector)
+          function detectBrowser()
           {
-            var browserLinks = document.querySelectorAll(selector);
-            if (browserLinks.length)
+            /**
+             * @name detectBrowser#that
+             * @type {detectBrowser}
+             */
+            var that = this;
+            /**
+             * Get browser UserAgent
+             * @var
+             * @type {string}
+             */
+            var _ua = window.navigator.userAgent;
+            /**
+             * Search browser identities in UserAgent string
+             * @constant
+             * @type {{opera: boolean, msie: boolean, msie6: boolean, msie7: boolean, msie8: boolean, msie9: boolean, mozilla: boolean, chrome: boolean, safari: boolean, msie_mobile: boolean, safari_mobile: boolean, opera_mobile: boolean, opera_mini: boolean, search_bot: boolean}}
+             */
+            var browser = {
+              opera: (/opera/i.test(_ua) || /opr/i.test(_ua)),
+              msie: (/msie/i.test(_ua) && !/opera/i.test(_ua) || /trident\//i.test(_ua)),
+              msie6: (/msie 6/i.test(_ua) && !/opera/i.test(_ua)),
+              msie7: (/msie 7/i.test(_ua) && !/opera/i.test(_ua)),
+              msie8: (/msie 8/i.test(_ua) && !/opera/i.test(_ua)),
+              msie9: (/msie 9/i.test(_ua) && !/opera/i.test(_ua)),
+              mozilla: /firefox/i.test(_ua),
+              chrome: (!((/opera/i.test(_ua) || /opr/i.test(_ua))) && /chrome/i.test(_ua)),
+              safari: (!(/chrome/i.test(_ua)) && /webkit|safari|khtml/i.test(_ua)),
+              msie_mobile: /iemobile/i.test(_ua),
+              safari_mobile: /iphone|ipod|ipad/i.test(_ua),
+              opera_mobile: /opera mini|opera mobi/i.test(_ua),
+              opera_mini: /opera mini/i.test(_ua),
+              search_bot: /(yandex|google|stackrambler|aport|slurp|msnbot|bingbot|twitterbot|ia_archiver|facebookexternalhit)/i.test(_ua)
+            };
+            /**
+             * Search browser version identities in UserAgent string
+             * @constant
+             * @type {{version: *}}
+             */
+            var version = {
+              version: (_ua.match(/.+(?:me|ox|on|rv|it|era|opr|ie)[\/: ]([\d.]+)/) || [0, '0'])[1]
+            };
+            /**
+             * Search OS identities in UserAgent string
+             * @constant
+             * @type {{mac: boolean, iphone: boolean, ipod: boolean, iphone4: boolean, ipod4: boolean, ipad: boolean, android: boolean, bada: boolean, mobile: boolean}}
+             */
+            var os = {
+              mac: /mac/i.test(_ua),
+              iphone: /iphone/i.test(_ua),
+              ipod: /ipod/i.test(_ua),
+              iphone4: /iphone.*OS 4/i.test(_ua),
+              ipod4: /ipod.*OS 4/i.test(_ua),
+              ipad: /ipad/i.test(_ua),
+              android: /android/i.test(_ua),
+              bada: /bada/i.test(_ua),
+              mobile: /iphone|ipod|ipad|opera mini|opera mobi|iemobile|android/i.test(_ua),
+            };
+            /**
+             * Return user browser name
+             * @returns {string}
+             * @name detectBrowser#getBrowser
+             */
+            that.getBrowser = function()
             {
-              var _ua = window.navigator.userAgent;
-              var browser = {
-                version: (_ua.match(/.+(?:me|ox|on|rv|it|era|opr|ie)[\/: ]([\d.]+)/) || [0, '0'])[1],
-                opera: (/opera/i.test(_ua) || /opr/i.test(_ua)),
-                msie: (/msie/i.test(_ua) && !/opera/i.test(_ua) || /trident\//i.test(_ua)),
-                msie6: (/msie 6/i.test(_ua) && !/opera/i.test(_ua)),
-                msie7: (/msie 7/i.test(_ua) && !/opera/i.test(_ua)),
-                msie8: (/msie 8/i.test(_ua) && !/opera/i.test(_ua)),
-                msie9: (/msie 9/i.test(_ua) && !/opera/i.test(_ua)),
-                mozilla: /firefox/i.test(_ua),
-                chrome: /chrome/i.test(_ua),
-                safari: (!(/chrome/i.test(_ua)) && /webkit|safari|khtml/i.test(_ua)),
-                iphone: /iphone/i.test(_ua),
-                ipod: /ipod/i.test(_ua),
-                iphone4: /iphone.*OS 4/i.test(_ua),
-                ipod4: /ipod.*OS 4/i.test(_ua),
-                ipad: /ipad/i.test(_ua),
-                android: /android/i.test(_ua),
-                bada: /bada/i.test(_ua),
-                mobile: /iphone|ipod|ipad|opera mini|opera mobi|iemobile|android/i.test(_ua),
-                msie_mobile: /iemobile/i.test(_ua),
-                safari_mobile: /iphone|ipod|ipad/i.test(_ua),
-                opera_mobile: /opera mini|opera mobi/i.test(_ua),
-                opera_mini: /opera mini/i.test(_ua),
-                mac: /mac/i.test(_ua),
-                search_bot: /(yandex|google|stackrambler|aport|slurp|msnbot|bingbot|twitterbot|ia_archiver|facebookexternalhit)/i.test(_ua)
-              };
-              for (var i = 0; i < browserLinks.length; i++)
+              for (var browserIs in browser)
               {
-                for (var browserIs in browser)
+                if (browser[browserIs] == true)
                 {
-                  if (browser[browserIs] == true && browserIs == browserLinks[i].getAttribute('data-browser'))
-                  {
-                    console.info(browserIs + ' ' + browser[browserIs]);
-                    console.log(browserIs);
-                    browserLinks[i].className += ' amg-outdate__browser--isUsed';
-                  }
+                  return browserIs;
+                }
+              }
+            };
+            /**
+             * Return user browser version
+             * @returns {string}
+             * @name detectBrowser#getVersion
+             */
+            that.getVersion = function()
+            {
+              return version.version;
+            };
+            /**
+             * Return user OS name
+             * @returns {string}
+             * @name detectBrowser#getOS
+             */
+            that.getOS = function()
+            {
+              for (var osIs in os)
+              {
+                if (os[osIs] == true)
+                {
+                  return osIs;
                 }
               }
             }
           }
-          buildBrowsersStack('.amg-outdate__browser');
+          userBrowserIs = new detectBrowser();
+          console.log(userBrowserIs.getBrowser());
+          console.log(userBrowserIs.getOS());
+          console.log(userBrowserIs.getVersion());
+          /**
+           * Build browsers stack in AMG outdate browsers modal.
+           * @requires getOutDateBrowserLink
+           * @constructor
+           * @name buildBrowserStack
+           * @author Igor Timohin <timohin.i@gmail.com>
+           * @copyright Igor Timohin 2015
+           * @version 1.0.0
+           *
+           * @example
+           * setBrowserStack = new buildBrowserStack();
+           * */
+          function buildBrowserStack()
+          {
+            var browserStack = {
+              chrome:
+              {
+                name: 'chrome',
+                link: '',
+                img: '',
+                order: '1'
+              },
+              opera:
+              {
+                name: 'opera',
+                link: '',
+                img: '',
+                order: '2'
+              },
+              ie:
+              {
+                name: 'ie',
+                link: '',
+                img: '',
+                order: '3'
+              },
+              firefox:
+              {
+                name: 'firefox',
+                link: '',
+                img: '',
+                order: '4'
+              },
+              safari:
+              {
+                name: 'safari',
+                link: '',
+                img: '',
+                order: '5'
+              }
+            };
+            console.log(browserStack);
+          }
+          buildBrowserStack();
+          /**
+           * Get outdate browser link in AMG modal cap and set up css class to it
+           * @name getOutDateBrowserLink
+           * @constructor
+           * @requires detectBrowser
+           * @param {string} browserLinksClass - CSS class off browsers links
+           * @param {string} classToAdd - CSS class, which will be added to user current browsers link
+           * @param {string} dataset - data-attribute of browsers links with browsers name, to compare current user browser and browsers link
+           * @example
+           * setUpLink = new getOutDateBrowserLink();
+           */
+          function getOutDateBrowserLink(browserLinksClass, classToAdd, dataset)
+          {
+            browserLinksClass = browserLinksClass || '.amg-outdate__browser';
+            classToAdd = classToAdd || ' amg-outdate__browser--isUsed';
+            dataset = dataset || 'data-browser';
+            var browserLinks = document.querySelectorAll(browserLinksClass);
+            if (browserLinks.length)
+            {
+              for (var i = 0; i < browserLinks.length; i++)
+              {
+                if (browserLinks[i].getAttribute(dataset) == userBrowserIs.getBrowser())
+                {
+                  browserLinks[i].className += (' ' + classToAdd);
+                }
+              }
+            }
+          }
+          setUpLink = new getOutDateBrowserLink();
         </script>
       </section>
     </div>
