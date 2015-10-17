@@ -639,14 +639,22 @@ body {
     width : 168px;
     height : 188px;
 }
+.amg-outdate__browser--isUsed .amg-outdate__browser-logo {
+    width : 113px;
+    height : 108px;
+}
 .amg-outdate__browser-logo {
-    width : 100%;
+    display : block;
+    width : 77px;
+    height : 77px;
+    margin : 0 auto;
 
     -o-object-fit : contain;
        object-fit : contain;
 }
 .amg-outdate__browser-name {
-    margin-top : 10px; 
+    display : inline-block; 
+    margin-top : 10px;
 
     font-weight : normal;
     font-size : 13px;

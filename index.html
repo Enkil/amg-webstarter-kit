@@ -5,6 +5,7 @@
     <title>Page Title</title>
     <!-- Main Meta information-->
     <meta charset="utf-8">
+    <meta http-equiv="Cache-control" content="public">
     <!-- Set DNS-prefetch domains (https://w3c.github.io/resource-hints/)
     link(rel="dns-prefetch" href="//example.com/")
     link(rel="dns-prefetch" href="//cdn.example.com/")
@@ -237,8 +238,8 @@
     <footer></footer>
     <div class="scripts">
       <!-- Set JS assets-->
-      <script src="js/vendor/vendor-bundle.min.js" defer></script>
-      <script src="js/custom/custom-bundle.min.js" defer></script>
+      <!--script(src="js/vendor/vendor-bundle.min.js" defer)-->
+      <!--script(src="js/custom/custom-bundle.min.js" defer)-->
       <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.-->
       <!--script(defer).
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
@@ -392,7 +393,7 @@
               ipad: /ipad/i.test(_ua),
               android: /android/i.test(_ua),
               bada: /bada/i.test(_ua),
-              mobile: /iphone|ipod|ipad|opera mini|opera mobi|iemobile|android/i.test(_ua),
+              mobile: /iphone|ipod|ipad|opera mini|opera mobi|iemobile|android/i.test(_ua)
             };
             /**
              * Return user browser name
@@ -457,6 +458,70 @@
           };
           var userBrowserIs = new detectBrowser();
           /**
+           * Check if user browser is MS IE 7 and define document.querySelector & document.querySelectorAll for IE7
+           *
+           * @function
+           * @name ifIE7querySelector
+           * @author Moritz Schmidt https://github.com/Fusselwurm
+           *
+           * @example
+           * ifIE7querySelector();
+           */
+          function ifIE7querySelector()
+          {
+            if (userBrowserIs.getBrowser() == 'msie' && userBrowserIs.getVersion() == '7')
+            {
+              /**
+               * define document.querySelector & document.querySelectorAll for IE7
+               *
+               * Taked from https://gist.github.com/Fusselwurm/4673695
+               *
+               * A not very fast but small hack. The approach is taken from
+               * http://weblogs.asp.net/bleroy/archive/2009/08/31/queryselectorall-on-old-ie-versions-something-that-doesn-t-work.aspx
+               *
+               */
+              (function()
+              {
+                var style = document.createStyleSheet(),
+                  select = function(selector, maxCount)
+                  {
+                    var all = document.all,
+                      l = all.length,
+                      i,
+                      resultSet = [];
+                    style.addRule(selector, "foo:bar");
+                    for (i = 0; i < l; i += 1)
+                    {
+                      if (all[i].currentStyle.foo === "bar")
+                      {
+                        resultSet.push(all[i]);
+                        if (resultSet.length > maxCount)
+                        {
+                          break;
+                        }
+                      }
+                    }
+                    style.removeRule(0);
+                    return resultSet;
+                  };
+                //  be rly sure not to destroy a thing!
+                if (document.querySelectorAll || document.querySelector)
+                {
+                  return;
+                }
+                document.querySelectorAll = function(selector)
+                {
+                  return select(selector, Infinity);
+                };
+                document.querySelector = function(selector)
+                {
+                  return select(selector, 1)[0] || null;
+                };
+              }());
+            }
+          }
+          ifIE7querySelector();
+          /**
            * Get outdate browser link in AMG modal cap and set up css class to it
            *
            * @function
@@ -482,13 +547,13 @@
             capWrapper = capWrapper || 'amg-outdate-wrapper';
             classToBodyAdd = classToBodyAdd || 'amg-outdate-modal-opened';
             var browser = new RegExp('chrome|opera|mozilla|msie'),
-              version = new RegExp('6|7|8|9|39|38|40');
+              version = new RegExp('6|7|8|9|39|38|40|41|45');
             var modalWrapper = document.getElementById(capWrapper),
               documentBody = document.body;
             /**
              * Test browser and version and show modal if needed
              */
-            if (userBrowserIs.getBrowser() == 'safari' && userBrowserIs.getVersion() == '7')
+            if (userBrowserIs.getBrowser() == 'safari' && userBrowserIs.getVersion() == '9')
             {
               modalWrapper.style.display = 'block';
               documentBody.className += (' ' + classToBodyAdd);
