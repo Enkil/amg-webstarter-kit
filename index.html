@@ -284,10 +284,10 @@
         <div><img src="https://mc.yandex.ru/watch/24973550" style="position:absolute; left:-9999px;" alt="" /></div>
       </noscript>
     </div>
-    <!-- Modal window that will be shown only for old browsers version-->
-    <div role="alert" class="amg-outdate-wrapper">
+    <!-- AstraMediaGroup Outdate browsers modal-->
+    <div role="alert" id="amg-outdate-wrapper" class="amg-outdate-wrapper">
       <section role="article" class="amg-outdate">
-        <button role="button" aria-label="Close" class="amg-outdate__close">
+        <button role="button" aria-label="Close" title="Закрыть" id="amg-outdate__close" class="amg-outdate__close">
           <svg id="layer-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.4 21.4">
             <style>
               .amg-cross {
@@ -312,21 +312,23 @@
           <a href="http://www.opera.com/ru" target="_blank" title="Установите последнюю версию браузера Opera"
           data-browser="opera" class="amg-outdate__browser"><img src="img/opera-logo.png" alt="Установите последнюю версию браузера Opera" class="amg-outdate__browser-logo"><span class="amg-outdate__browser-name">Opera</span></a>
           <a href="http://windows.microsoft.com/ru-ru/internet-explorer/download-ie"
-          target="_blank" title="Установите последнюю версию браузера Microsoft Internet Explorer" data-browser="msie" class="amg-outdate__browser"><img src="img/ie-logo.png" alt="Установите последнюю версию браузера Microsoft Internet Explorer" style="width" class="amg-outdate__browser-logo"><span class="amg-outdate__browser-name">IE/Edge</span></a>
+          target="_blank" title="Установите последнюю версию браузера Microsoft Internet Explorer" data-browser="msie" class="amg-outdate__browser"><img src="img/explorer-logo.png" alt="Установите последнюю версию браузера Microsoft Internet Explorer" style="width" class="amg-outdate__browser-logo"><span class="amg-outdate__browser-name">IE/Edge</span></a>
           <a href="https://www.mozilla.org/ru/firefox/new/"
           target="_blank" title="Установите последнюю версию браузера Mozilla Firefox" data-browser="mozilla" class="amg-outdate__browser"><img src="img/firefox-logo.png" alt="Установите последнюю версию браузера Mozilla Firefox" class="amg-outdate__browser-logo"><span class="amg-outdate__browser-name">Firefox</span></a>
           <a href="https://support.apple.com/downloads/safari" target="_blank"
           title="Установите последнюю версию браузера Apple Safari" data-browser="safari" class="amg-outdate__browser"><img src="img/safari-logo.png" alt="Установите последнюю версию браузера Apple Safari" class="amg-outdate__browser-logo"><span class="amg-outdate__browser-name">Safari</span></a>
         </div>
-        <button role="button" class="amg-outdate__btn-thx">Спасибо, меня все устраивает</button>
+        <button role="button" title="Закрыть" id="amg-outdate__btn-thx" class="amg-outdate__btn-thx">Спасибо, меня все устраивает</button>
+        <!-- AstraMediaGroup Outdate browsers modal scripts-->
         <script>
           /**
            * Detect browser, browser version and OS
-           * @constructor
+           *
+           * @class
            * @name detectBrowser
+           * @version 1.0.0
            * @author Igor Timohin <timohin.i@gmail.com>
            * @copyright Igor Timohin 2015
-           * @version 1.0.0
            *
            * @example
            * userBrowserIs = new detectBrowser();
@@ -334,7 +336,7 @@
            * console.log(userBrowserIs.getOS()); // mac
            * console.log(userBrowserIs.getVersion()); // 45.0.2454.93
            * */
-          function detectBrowser()
+          var detectBrowser = function()
           {
             /**
              * @name detectBrowser#that
@@ -373,8 +375,8 @@
              * @constant
              * @type {{version: *}}
              */
-            var version = {
-              version: (_ua.match(/.+(?:me|ox|on|rv|it|era|opr|ie)[\/: ]([\d.]+)/) || [0, '0'])[1]
+            var versions = {
+              version: (_ua.match(/.+(?:me|ox|on|rv|it|era|opr|ie|msie)[\/: ]([\d.]+)/) || [0, '0'])[1]
             };
             /**
              * Search OS identities in UserAgent string
@@ -414,7 +416,23 @@
              */
             that.getVersion = function()
             {
-              return version.version;
+              /**
+               * IE version is not correctly provides and we get 0. If it is so - run second check (else)
+               */
+              if (versions.version != 0)
+              {
+                return versions.version.split('.')[0];
+              }
+              else
+              {
+                var ieVersion = -1; // Return value assumes failure.
+                if (navigator.appName == 'Microsoft Internet Explorer')
+                {
+                  var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+                  if (re.exec(_ua) != null) ieVersion = parseFloat(RegExp.$1);
+                }
+                return ieVersion;
+              }
             };
             /**
              * Return user OS name
@@ -429,84 +447,61 @@
                 {
                   return osIs;
                 }
+                else
+                {
+                  var _up = window.navigator.platform;
+                  return _up;
+                }
               }
             }
-          }
-          userBrowserIs = new detectBrowser();
-          console.log(userBrowserIs.getBrowser());
-          console.log(userBrowserIs.getOS());
-          console.log(userBrowserIs.getVersion());
-          /**
-           * Build browsers stack in AMG outdate browsers modal.
-           * @requires getOutDateBrowserLink
-           * @constructor
-           * @name buildBrowserStack
-           * @author Igor Timohin <timohin.i@gmail.com>
-           * @copyright Igor Timohin 2015
-           * @version 1.0.0
-           *
-           * @example
-           * setBrowserStack = new buildBrowserStack();
-           * */
-          function buildBrowserStack()
-          {
-            var browserStack = {
-              chrome:
-              {
-                name: 'chrome',
-                link: '',
-                img: '',
-                order: '1'
-              },
-              opera:
-              {
-                name: 'opera',
-                link: '',
-                img: '',
-                order: '2'
-              },
-              ie:
-              {
-                name: 'ie',
-                link: '',
-                img: '',
-                order: '3'
-              },
-              firefox:
-              {
-                name: 'firefox',
-                link: '',
-                img: '',
-                order: '4'
-              },
-              safari:
-              {
-                name: 'safari',
-                link: '',
-                img: '',
-                order: '5'
-              }
-            };
-            console.log(browserStack);
-          }
-          buildBrowserStack();
+          };
+          var userBrowserIs = new detectBrowser();
           /**
            * Get outdate browser link in AMG modal cap and set up css class to it
+           *
+           * @function
            * @name getOutDateBrowserLink
-           * @constructor
+           * @version 1.0.0
+           * @author Igor Timohin <timohin.i@gmail.com>
            * @requires detectBrowser
+           *
            * @param {string} browserLinksClass - CSS class off browsers links
            * @param {string} classToAdd - CSS class, which will be added to user current browsers link
            * @param {string} dataset - data-attribute of browsers links with browsers name, to compare current user browser and browsers link
+           * @param {string } capWrapper - Modal wrapper
+           * @param {string } classToBodyAdd - CSS class which added to document.body when modal opened
+           *
            * @example
            * setUpLink = new getOutDateBrowserLink();
            */
-          function getOutDateBrowserLink(browserLinksClass, classToAdd, dataset)
+          function getOutDateBrowserLink(browserLinksClass, classToAdd, dataset, capWrapper, classToBodyAdd)
           {
             browserLinksClass = browserLinksClass || '.amg-outdate__browser';
             classToAdd = classToAdd || ' amg-outdate__browser--isUsed';
             dataset = dataset || 'data-browser';
+            capWrapper = capWrapper || 'amg-outdate-wrapper';
+            classToBodyAdd = classToBodyAdd || 'amg-outdate-modal-opened';
+            var browser = new RegExp('chrome|opera|mozilla|msie'),
+              version = new RegExp('6|7|8|9|39|38|40');
+            var modalWrapper = document.getElementById(capWrapper),
+              documentBody = document.body;
+            /**
+             * Test browser and version and show modal if needed
+             */
+            if (userBrowserIs.getBrowser() == 'safari' && userBrowserIs.getVersion() == '8')
+            {
+              modalWrapper.style.display = 'block';
+              documentBody.className += (' ' + classToBodyAdd);
+            }
+            else if (browser.test(userBrowserIs.getBrowser()) && version.test(userBrowserIs.getVersion()))
+            {
+              modalWrapper.style.display = 'block';
+              documentBody.className += (' ' + classToBodyAdd);
+            }
             var browserLinks = document.querySelectorAll(browserLinksClass);
+            /**
+             * Check which browser link mateches current users browser and add special CSS class to it
+             */
             if (browserLinks.length)
             {
               for (var i = 0; i < browserLinks.length; i++)
@@ -518,7 +513,100 @@
               }
             }
           }
-          setUpLink = new getOutDateBrowserLink();
+          getOutDateBrowserLink();
+          /**
+           * Set current user browser link to browserStack block center
+           *
+           * @function
+           * @name buildBrowserStack
+           * @version 1.0.0
+           * @author Igor Timohin <timohin.i@gmail.com>
+           * @requires getOutDateBrowserLink
+           *
+           * @param {string} browserLinksClass - CSS class to find all browsers link
+           * @param {string} classToCheck - CSS class to check current browser (this class placed by getOutDateBrowserLink.js)
+           * @param {string} browsersStackClass - CSS class to find browsersStack
+           *
+           * @example
+           * setBrowserStack = new buildBrowserStack();
+           */
+          function buildBrowserStack(browserLinksClass, classToCheck, browsersStackClass)
+          {
+            browserLinksClass = browserLinksClass || '.amg-outdate__browser';
+            classToCheck = classToCheck || 'amg-outdate__browser--isUsed';
+            browsersStackClass = browsersStackClass || '.amg-outdate__browsers-stack';
+            var browsersStack = document.querySelector(browsersStackClass);
+            var browsersLinks = document.querySelectorAll(browserLinksClass);
+            if (browsersLinks.length)
+            {
+              /**
+               * Go throw browsersLinks and find link with classToCheck, than cache it position in browserLinksClass
+               */
+              for (i = 0; i < browsersLinks.length; i++)
+              {
+                if (browsersLinks[i].className.match(new RegExp('(\\s|^)' + classToCheck + '(\\s|$)')))
+                {
+                  var browsersLinkPosition = i;
+                }
+              }
+              /**
+               * Cache current position if outdate browser link and IE link (before IE link is in center by default)
+               */
+              var browsersLinksCurrent = browsersLinks[browsersLinkPosition];
+              var browsersLinksIE = browsersLinks[2];
+              /**
+               * Set new position of outdate browser link and IE link
+               */
+              if (browsersLinkPosition < 2)
+              {
+                browsersStack.replaceChild(browsersLinksCurrent, browsersLinksIE);
+                browsersStack.insertBefore(browsersLinksIE, browsersLinks[0])
+              }
+              else if (browsersLinkPosition > 2)
+              {
+                browsersStack.replaceChild(browsersLinksCurrent, browsersLinksIE);
+                browsersStack.appendChild(browsersLinksIE);
+              }
+              else
+              {
+                // do nothing
+              }
+            }
+          }
+          buildBrowserStack();
+          /**
+           * Close AstraMediaGroup outdade browsers modal
+           *
+           * @function
+           * @name closeAMGOutdateBrowserModal
+           * @version 1.0.0
+           * @author Igor Timohin <timohin.i@gmail.com>
+           *
+           * @param {string} cross - Cross icon in head of modal
+           * @param {string} btn - "Thanks" text-btn in modal footer
+           * @param {string} capWrapper - Modal wrapper
+           *
+           * @example
+           * closeAMGOutdateBrowserModal();
+           */
+          function closeAMGOutdateBrowserModal(cross, btn, capWrapper)
+          {
+            cross = cross || "amg-outdate__close";
+            btn = btn || "amg-outdate__btn-thx";
+            capWrapper = capWrapper || "amg-outdate-wrapper";
+            var modalCross = document.getElementById(cross),
+              modalBtn = document.getElementById(btn),
+              modalWrapper = document.getElementById(capWrapper);
+            modalCross.onclick = function()
+            {
+              modalWrapper.style.display = "none";
+            };
+            modalBtn.onclick = function()
+            {
+              modalWrapper.style.display = "none";
+            };
+          }
+          closeAMGOutdateBrowserModal();
         </script>
       </section>
     </div>
