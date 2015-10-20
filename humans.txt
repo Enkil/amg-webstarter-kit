@@ -15,7 +15,7 @@
     School: http://epixx.ru
 
 # SITE
-	Language: Russian
+	Language: Russian / English
 	Doctype: HTML5
 	Standards: HTML5, CSS3
 	Components: Sass, Jade, JavaScript, Apache Server Configs, Normalize.css

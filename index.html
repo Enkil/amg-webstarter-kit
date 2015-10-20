@@ -16,11 +16,11 @@
     link(rel="preconnect" href="//cdn.example.com" crossorigin)
     
     -->
-    <!-- Set preload resources (https://w3c.github.io/resource-hints/)
-    link(rel="preload" href="YOUR_FONT_NAME.woff2" as="font")
-    link(rel="preload" href="example.png")
-    
-    -->
+    <!-- Set preload resources (https://w3c.github.io/resource-hints/)-->
+    <!--link(rel="preload" href="css/fonts/roboto/bold/roboto-bold-webfont.woff" as="font")-->
+    <!--link(rel="preload" href="css/fonts/roboto/light/roboto-light-webfont.woff" as="font")-->
+    <!--link(rel="preload" href="css/fonts/roboto/medium/roboto-medium-webfont.woff" as="font")-->
+    <!--link(rel="preload" href="css/fonts/roboto/regular/roboto-regular-webfont.woff" as="font")-->
     <!-- Set prerender resources (https://w3c.github.io/resource-hints/)
     link(rel="prerender" href="//example.com/next-page.html")
     
@@ -99,7 +99,7 @@
     
     -->
     <!-- Set external CSS libraries
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
     
     -->
     <!-- Set JS that must be in <head>-->
@@ -110,8 +110,7 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <!-- Async load CSS-->
     <script>
-      /*!
-       loadCSS: load a CSS file asynchronously.
+      /* loadCSS: load a CSS file asynchronously.
        [c]2015 @scottjehl, Filament Group, Inc.
        Licensed MIT
        */
@@ -230,451 +229,376 @@
   </head>
 
   <body>
-    <!-- Header-->
-    <header></header>
-    <!-- Main-->
-    <main></main>
-    <!-- Footer-->
-    <footer></footer>
-    <div class="scripts">
-      <!-- Set JS assets-->
-      <script src="js/vendor/vendor-bundle.min.js" defer></script>
-      <script src="js/custom/custom-bundle.min.js" defer></script>
-      <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.-->
-      <!--script(defer).
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q || []).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='https://www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X','auto');ga('send','pageview');
-      
-      -->
-      <!-- Yandex.Metrika counter: change  yaCounterXXXXXXXX and id: XXXXXXXX to be your site's ID.-->
-      <!--script(defer).
-      (function (d, w, c) {
-          (w[c] = w[c] || []).push(function () {
-              try {
-                  w.yaCounterXXXXXXXX = new Ya.Metrika({
-                      id: XXXXXXXX,
-                      clickmap: true,
-                      trackLinks: true,
-                      accurateTrackBounce: true,
-                      webvisor: true,
-                      trackHash: true
-                  });
-              } catch (e) {
-              }
-          });
-          var n = d.getElementsByTagName("script")[0],
-                  s = d.createElement("script"),
-                  f = function () {
-                      n.parentNode.insertBefore(s, n);
-                  };
-          s.type = "text/javascript";
-          s.async = true;
-          s.src = "https://mc.yandex.ru/metrika/watch.js";
-          if (w.opera == "[object Opera]") {
-              d.addEventListener("DOMContentLoaded", f, false);
-          } else {
-              f();
-          }
-      })(document, window, "yandex_metrika_callbacks");
-      -->
-      <noscript>
-        <div><img src="https://mc.yandex.ru/watch/24973550" style="position:absolute; left:-9999px;" alt="" /></div>
-      </noscript>
-    </div>
-    <!-- AstraMediaGroup Outdate browsers modal-->
-    <div role="alert" id="amg-outdate-wrapper" class="amg-outdate-wrapper">
-      <section role="article" class="amg-outdate">
-        <button role="button" aria-label="Close" title="Закрыть" id="amg-outdate__close" class="amg-outdate__close">
-          <svg id="layer-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.4 21.4">
-            <style>
-              .amg-cross {
-                fill-rule: evenodd;
-                clip-rule: evenodd;
-              }
-            </style>
-            <path class="amg-cross" d="M20.7 0l.7.7L.8 21.4l-.7-.7L20.7 0z" />
-            <path class="amg-cross" d="M.7 0L0 .7l20.6 20.6.7-.7L.7 0z" /> </svg>
-        </button>
-        <h2 class="amg-outdate__title">Ваш браузер<span class="amg-outdate__title-more"> может больше</span></h2>
-        <p class="amg-outdate__text">Команда Astra Media Group постаралась сделать сайт
-          <br> удобным, понятным и красивым.</p>
-        <p class="amg-outdate__text">Однако используемая вами версия браузера
-          <br> может неправильно отображать сайты
-          <br> и портить вам удовольствие от работы.</p>
-        <p class="amg-outdate__text">Установите более современный браузер.
-          <br> Это бесплатно и займет всего пару минут.</p>
-        <p class="amg-outdate__text">После этого вы заметите, что интернет стал лучше!</p>
-        <div class="amg-outdate__browsers-stack">
-          <a href="https://www.google.ru/chrome/browser/desktop/" target="_blank" title="Установите последнюю версию браузера Google Chrome" data-browser="chrome" class="amg-outdate__browser"><img src="img/chrome-logo.png" alt="Установите последнюю версию браузера Google Chrome" class="amg-outdate__browser-logo"><span class="amg-outdate__browser-name">Chrome</span></a>
-          <a href="http://www.opera.com/ru" target="_blank" title="Установите последнюю версию браузера Opera"
-          data-browser="opera" class="amg-outdate__browser"><img src="img/opera-logo.png" alt="Установите последнюю версию браузера Opera" class="amg-outdate__browser-logo"><span class="amg-outdate__browser-name">Opera</span></a>
-          <a href="http://windows.microsoft.com/ru-ru/internet-explorer/download-ie"
-          target="_blank" title="Установите последнюю версию браузера Microsoft Internet Explorer" data-browser="msie" class="amg-outdate__browser"><img src="img/explorer-logo.png" alt="Установите последнюю версию браузера Microsoft Internet Explorer" style="width" class="amg-outdate__browser-logo"><span class="amg-outdate__browser-name">IE/Edge</span></a>
-          <a href="https://www.mozilla.org/ru/firefox/new/"
-          target="_blank" title="Установите последнюю версию браузера Mozilla Firefox" data-browser="mozilla" class="amg-outdate__browser"><img src="img/firefox-logo.png" alt="Установите последнюю версию браузера Mozilla Firefox" class="amg-outdate__browser-logo"><span class="amg-outdate__browser-name">Firefox</span></a>
-          <a href="https://support.apple.com/downloads/safari" target="_blank"
-          title="Установите последнюю версию браузера Apple Safari" data-browser="safari" class="amg-outdate__browser"><img src="img/safari-logo.png" alt="Установите последнюю версию браузера Apple Safari" class="amg-outdate__browser-logo"><span class="amg-outdate__browser-name">Safari</span></a>
+    <!-- HEADER-->
+    <header>
+      <!-- Top line-->
+      <div class="header-top-line">
+        <div class="header-top-line__wrapper">
+          <div class="header-top-line__strip header-top-line__strip--grey header-top-line__strip--grey-left"></div>
+          <div class="header-top-line__strip header-top-line__strip--blue-1"></div>
+          <div class="header-top-line__strip header-top-line__strip--blue-2"></div>
+          <div class="header-top-line__strip header-top-line__strip--blue-3"></div>
+          <div class="header-top-line__strip header-top-line__strip--blue-4"></div>
+          <div class="header-top-line__strip header-top-line__strip--grey header-top-line__strip--grey-right"></div>
         </div>
-        <button role="button" title="Закрыть" id="amg-outdate__btn-thx" class="amg-outdate__btn-thx">Спасибо, меня все устраивает</button>
-        <!-- AstraMediaGroup Outdate browsers modal scripts-->
+      </div>
+      <!-- Header menu-->
+      <nav class="header">
+        <div class="container">
+          <!-- Language change-->
+          <div class="header__lang"><a href="javascript:void(0)" title="Change website language to Russian" class="header__lang-item header__lang-item--current">RU</a><a href="javascript:void(0)" title="Сменить язык сайта на Английский" class="header__lang-item">EN</a></div>
+          <!-- Logo-->
+          <a href="index.html" title="НейроПартнер" class="header__logo-link"><img data-original="img/neiropartner-logo.png" alt="НейроПартнер. Лаборатория нейропротезов" title="НейроПартнер. Лаборатория нейропротезов" class="header__logo lazyload"></a>
+          <!-- Header navigation-->
+          <ul class="header__nav">
+            <li class="header__nav-item"><a href="projects.html" title="Проекты" class="header__nav-link">Проекты</a></li>
+            <li class="header__nav-item"><a href="javascript:void(0)" title="Нейро" class="header__nav-link">Нейро</a></li>
+            <li class="header__nav-item"><a href="consalting.html" title="Консалтинг" class="header__nav-link">Консалтинг</a></li>
+            <li class="header__nav-item"><a href="javascript:void(0)" title="Наши работы" class="header__nav-link">Наши работы</a></li>
+            <li class="header__nav-item"><a href="javascript:void(0)" title="Сотрудничество" class="header__nav-link header__nav-link--partnership">Сотрудничество</a></li>
+            <li class="header__nav-item"><a href="contacts.html" title="Контакты" class="header__nav-link header__nav-link--contacts">Контакты</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <!-- SLIDER-->
+      <div class="slider">
+        <div class="owl-own-nav"></div>
+        <div class="container js-owl-top-slider">
+          <!-- SLIDE-->
+          <a href="javascript:void(0)" title="Лаборатория нейропротезов" class="slider__slide">
+            <!-- Left block-->
+            <div class="slider__slide-left"><img data-original="img/slider-image--1.png" alt="НейроПартнер. Лаборатория нейропротезов" title="НейроПартнер. Лаборатория нейропротезов" class="slider__slide-image lazyload"></div>
+            <!-- Right block-->
+            <div class="slider__slide-right">
+              <div class="slider__gradient"><img data-original="img/np-slider-header.png" alt="НейроПартнер. Лаборатория нейропротезов" title="НейроПартнер. Лаборатория нейропротезов" class="slider__neiropartner lazyload"></div>
+              <h3 class="slider__text">Лаборатория нейропротезов</h3>
+              <!-- Blockquote-->
+              <blockquote class="slider__blockquote">
+                <p class="slider__blockquote-text">Воля - это то что заставляет тебя побеждать тогда, когда твой разум говорит тебе, что ты повержен</p>
+                <footer class="slider__blockquote-footer"> <cite class="slider__blockquote-cite">Карлос Кастанеда</cite> </footer>
+              </blockquote>
+            </div>
+          </a>
+          <!-- SLIDE-->
+          <a href="javascript:void(0)" title="Лаборатория нейропротезов" class="slider__slide">
+            <!-- Left block-->
+            <div class="slider__slide-left"><img data-original="img/slider-image--1.png" alt="НейроПартнер. Лаборатория нейропротезов" title="НейроПартнер. Лаборатория нейропротезов" class="slider__slide-image lazyload"></div>
+            <!-- Right block-->
+            <div class="slider__slide-right">
+              <div class="slider__gradient"><img data-original="img/np-slider-header.png" alt="НейроПартнер. Лаборатория нейропротезов" title="НейроПартнер. Лаборатория нейропротезов" class="slider__neiropartner lazyload"></div>
+              <h3 class="slider__text">Лаборатория нейропротезов</h3>
+              <!-- Blockquote-->
+              <blockquote class="slider__blockquote">
+                <p class="slider__blockquote-text">Воля - это то что заставляет тебя побеждать тогда, когда твой разум говорит тебе, что ты повержен</p>
+                <footer class="slider__blockquote-footer"> <cite class="slider__blockquote-cite">Карлос Кастанеда</cite> </footer>
+              </blockquote>
+            </div>
+          </a>
+          <!-- SLIDE-->
+          <a href="javascript:void(0)" title="Лаборатория нейропротезов" class="slider__slide">
+            <!-- Left block-->
+            <div class="slider__slide-left"><img data-original="img/slider-image--1.png" alt="НейроПартнер. Лаборатория нейропротезов" title="НейроПартнер. Лаборатория нейропротезов" class="slider__slide-image lazyload"></div>
+            <!-- Right block-->
+            <div class="slider__slide-right">
+              <div class="slider__gradient"><img data-original="img/np-slider-header.png" alt="НейроПартнер. Лаборатория нейропротезов" title="НейроПартнер. Лаборатория нейропротезов" class="slider__neiropartner lazyload"></div>
+              <h3 class="slider__text">Лаборатория нейропротезов</h3>
+              <!-- Blockquote-->
+              <blockquote class="slider__blockquote">
+                <p class="slider__blockquote-text">Воля - это то что заставляет тебя побеждать тогда, когда твой разум говорит тебе, что ты повержен</p>
+                <footer class="slider__blockquote-footer"> <cite class="slider__blockquote-cite">Карлос Кастанеда</cite> </footer>
+              </blockquote>
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- PROBLEMS-->
+      <div class="container">
+        <!-- Problem-->
+        <div class="problem"><a href="javascript:void(0)" class="problem__link">1<span class="problem__link-text">миллиард</span>
+            <p class="problem__text">человек в мире имеет <br /> какую-либо форму инвалидности</p></a></div>
+        <!-- Problem-->
+        <div class="problem"><a href="javascript:void(0)" class="problem__link">2<span class="problem__link-text">миллиона</span>
+            <p class="problem__text">обездвиженных людей <br /> с вертеброспинальной травмой</p></a></div>
+        <!-- Problem-->
+        <div class="problem"><a href="javascript:void(0)" class="problem__link">50<span class="problem__link-text">тысяч</span>
+            <p class="problem__text">парализованных пациентов <br /> появляется каждый год</p></a></div>
+      </div>
+      <div class="impuls"></div>
+      <!-- DIRECTIONS-->
+      <div class="container">
+        <!-- Direction-->
+        <div class="direction">
+          <div class="direction__icon direction__icon--philosophy"></div>
+          <h2 class="direction__title">Философия</h2>
+          <p class="direction__text"> НейроПартнер объединяет в себе работу в различных направлениях, которые ведут к одной цели — помощи пациентам с нейро-моторными заболеваниями </p>
+        </div>
+        <!-- Direction-->
+        <div class="direction">
+          <div class="direction__icon direction__icon--principles"></div>
+          <h2 class="direction__title">Принципы</h2>
+          <ul class="direction__list">
+            <li class="direction__item">Созидание, нацеленное на поддержку больных людей</li>
+            <li class="direction__item">Непрерывное саморазвитие</li>
+            <li class="direction__item">Открытость</li>
+          </ul>
+        </div>
+        <!-- Direction-->
+        <div class="direction">
+          <div class="direction__icon direction__icon--directions"></div>
+          <h2 class="direction__title">Направления</h2>
+          <ul class="direction__list">
+            <li class="direction__item">Научно-исследовательская работа по созданию нейропротезов и технологий нейрореабилитации</li>
+            <li class="direction__item">Содействие совершенствованию системы помощи инвалидам</li>
+            <li class="direction__item">Популяризация современных российских и зарубежных разработок</li>
+          </ul>
+        </div>
+      </div>
+      <div class="wrapper wrapper--grey">
+        <!-- PROJECTS-->
+        <section class="container">
+          <h2 class="projects-title">Проекты</h2>
+          <div class="projects-slider">
+            <div class="owl-own-nav-projects"></div>
+            <div class="container js-owl-projects-slider">
+              <!-- Project-->
+              <section class="project">
+                <div class="project__icon project__icon--multi"></div>
+                <h3 class="project__title">Мультисистемная <br />нейрореабилитация</h3>
+                <p class="project__text">Проект ориентирован на отработку комплекса мультисистемной нейрореабилитации инвалидов, в котором используются разные технологии нейропротезирования</p><a href="javascript:void(0)" title="Узнать больше о проекте Мультисистемная нейрореабилитация"
+                class="project__link">Узнать больше</a> </section>
+              <!-- Project-->
+              <section class="project">
+                <div class="project__icon project__icon--coctails"></div>
+                <h3 class="project__title">Нейрококтейли</h3>
+                <p class="project__text">В проекте разрабатывается группа новых нейромодулирующих препаратов для активации нейрональной пластичности: драг-дизайн молекулы, синтез химических агентов и их апробация</p><a href="javascript:void(0)" title="Узнать больше о проекте Нейрококтейли"
+                class="project__link">Узнать больше</a> </section>
+              <!-- Project-->
+              <section class="project">
+                <div class="project__icon project__icon--implants"></div>
+                <h3 class="project__title">Мягкие имплантанты</h3>
+                <p class="project__text">Проект нацелен на создание электро-химического нейропротеза для имплантации в головной и спинной мозг человека</p><a href="javascript:void(0)" title="Узнать больше о проекте Мягкие имплантанты" class="project__link">Узнать больше</a> </section>
+              <!-- Project-->
+              <section class="project">
+                <div class="project__icon project__icon--implants"></div>
+                <h3 class="project__title">Мягкие имплантанты</h3>
+                <p class="project__text">Проект нацелен на создание электро-химического нейропротеза для имплантации в головной и спинной мозг человека</p><a href="javascript:void(0)" title="Узнать больше о проекте Мягкие имплантанты" class="project__link">Узнать больше</a> </section>
+            </div>
+          </div><a href="javascript:void(0)" title="Все проекты НейроПартнер" class="btn btn--all">Все проекты</a>
+          <div class="impuls"></div>
+        </section>
+        <!-- CONSALTING-->
+        <section class="container consalting">
+          <div class="consalting__left"><img data-original="img/consalting-img.png" alt="Консалтинг от НейроПартнер" title="Консалтинг от НейроПартнер" class="consalting__img lazyload"></div>
+          <div class="consalting__right">
+            <h2 class="consalting__title">Консалтинг</h2>
+            <p class="consalting__text">С целью популяризации новых экспериментальных и нейрореабилитационных технологий специалистами НейроПартнера проводятся лекции, семинары, индивидуальное обучение персонала научных лабораторий и клиник по различным темам</p>
+            <p class="consalting__text">Наша деятельность основывается на многолетнем опыте исследований, в ходе которых были созданы уникальные экспериментальные модели для изучения нервной системы в норме и патологии, разработаны новые нейрореабилитационные подходы</p><a href="javascript:void(0)"
+            title="Узнать больше о консалтинге от НейроПартнер" class="consalting__link">Узнать больше</a> </div>
+        </section>
+      </div>
+      <!-- MISSION-->
+      <div class="mission-wrapper">
+        <section class="container mission">
+          <h2 class="mission__title">Наша миссия</h2>
+          <p class="mission__text">НейроПартнер является платформой для различных видов деятельности, направленных на улучшение уровня жизни инвалидов</p>
+          <div class="mission__img"></div>
+        </section>
+      </div>
+      <!-- OUR WORKS-->
+      <section class="container our-works">
+        <h2 class="our-works__title">Наши работы</h2>
+        <p class="our-works__text">Сотрудники НейроПартнера являются признанными специалистами в своей области, имеют множество публикаций в научных журналах, ведут активные исследования в области нейропротезирования, консультируют и ведут преподавательскую деятельность. Результаты
+          научных работ запатентованы</p>
+        <div class="our-works-slider">
+          <div class="owl-own-nav-works"></div>
+          <div class="container js-owl-works-slider">
+            <section class="work">
+              <figure class="work__img-item"><img data-original="img/work-img.png" alt="Спинномозговой имплантат позволяет встать на ноги" title="Спинномозговой имплантат позволяет встать на ноги" class="work__img lazyload"></figure>
+              <h3 class="work__title"><a href="javascript:void(0)" title="Спинномозговой имплантат позволяет встать на ноги" class="work__link">Спинномозговой имплантат позволяет встать на ноги</a></h3>
+              <p class="work__text">Посредством введения химических веществ воздействуют на нейрональные рецепторы, вызывая определённые эффекты</p><a href="javascript:void(0)" title="Узнать больше о данной работе НейроПартнер" class="work__more-link">Узнать больше</a> </section>
+            <section class="work">
+              <figure class="work__img-item"><img data-original="img/work-img.png" alt="Спинномозговой имплантат позволяет встать на ноги" title="Спинномозговой имплантат позволяет встать на ноги" class="work__img lazyload"></figure>
+              <h3 class="work__title"><a href="javascript:void(0)" title="Спинномозговой имплантат позволяет встать на ноги" class="work__link">Спинномозговой имплантат позволяет встать на ноги</a></h3>
+              <p class="work__text">Посредством введения химических веществ воздействуют на нейрональные рецепторы, вызывая определённые эффекты</p><a href="javascript:void(0)" title="Узнать больше о данной работе НейроПартнер" class="work__more-link">Узнать больше</a> </section>
+            <section class="work">
+              <figure class="work__img-item"><img data-original="img/work-img.png" alt="Спинномозговой имплантат позволяет встать на ноги" title="Спинномозговой имплантат позволяет встать на ноги" class="work__img lazyload"></figure>
+              <h3 class="work__title"><a href="javascript:void(0)" title="Спинномозговой имплантат позволяет встать на ноги" class="work__link">Спинномозговой имплантат позволяет встать на ноги</a></h3>
+              <p class="work__text">Посредством введения химических веществ воздействуют на нейрональные рецепторы, вызывая определённые эффекты</p><a href="javascript:void(0)" title="Узнать больше о данной работе НейроПартнер" class="work__more-link">Узнать больше</a> </section>
+            <section class="work">
+              <figure class="work__img-item"><img data-original="img/work-img.png" alt="Спинномозговой имплантат позволяет встать на ноги" title="Спинномозговой имплантат позволяет встать на ноги" class="work__img lazyload"></figure>
+              <h3 class="work__title"><a href="javascript:void(0)" title="Спинномозговой имплантат позволяет встать на ноги" class="work__link">Спинномозговой имплантат позволяет встать на ноги</a></h3>
+              <p class="work__text">Посредством введения химических веществ воздействуют на нейрональные рецепторы, вызывая определённые эффекты</p><a href="javascript:void(0)" title="Узнать больше о данной работе НейроПартнер" class="work__more-link">Узнать больше</a> </section>
+            <section class="work">
+              <figure class="work__img-item"><img data-original="img/work-img.png" alt="Спинномозговой имплантат позволяет встать на ноги" title="Спинномозговой имплантат позволяет встать на ноги" class="work__img lazyload"></figure>
+              <h3 class="work__title"><a href="javascript:void(0)" title="Спинномозговой имплантат позволяет встать на ноги" class="work__link">Спинномозговой имплантат позволяет встать на ноги</a></h3>
+              <p class="work__text">Посредством введения химических веществ воздействуют на нейрональные рецепторы, вызывая определённые эффекты</p><a href="javascript:void(0)" title="Узнать больше о данной работе НейроПартнер" class="work__more-link">Узнать больше</a> </section>
+            <section class="work">
+              <figure class="work__img-item"><img data-original="img/work-img.png" alt="Спинномозговой имплантат позволяет встать на ноги" title="Спинномозговой имплантат позволяет встать на ноги" class="work__img lazyload"></figure>
+              <h3 class="work__title"><a href="javascript:void(0)" title="Спинномозговой имплантат позволяет встать на ноги" class="work__link">Спинномозговой имплантат позволяет встать на ноги</a></h3>
+              <p class="work__text">Посредством введения химических веществ воздействуют на нейрональные рецепторы, вызывая определённые эффекты</p><a href="javascript:void(0)" title="Узнать больше о данной работе НейроПартнер" class="work__more-link">Узнать больше</a> </section>
+          </div>
+        </div><a href="javascript:void(0)" title="Все проекты НейроПартнер" class="btn btn--all">Все работы</a> </section>
+      <!-- PARTNERS-->
+      <div class="wrapper wrapper--light">
+        <div class="container partners">
+          <h2 class="partners__title">Наши партнеры</h2>
+          <div class="partners-slider">
+            <div class="owl-own-nav-partners"></div>
+            <div class="container js-owl-partners-slider">
+              <a href="javascript:void(0)" title="Швейцарская высшая техническая школа Цюриха ETH" class="partner"><img data-original="svg/uzh.svg" alt="Швейцарская высшая техническая школа Цюриха ETH" title="Швейцарская высшая техническая школа Цюриха ETH" class="partner__logo lazyload">
+                <p class="partner__name">Швейцарская высшая техническая школа Цюриха ETH</p>
+              </a>
+              <a href="javascript:void(0)" title="Швейцарская высшая техническая школа Цюриха ETH" class="partner"><img data-original="svg/uzh.svg" alt="Швейцарская высшая техническая школа Цюриха ETH" title="Швейцарская высшая техническая школа Цюриха ETH" class="partner__logo lazyload">
+                <p class="partner__name">Швейцарская высшая техническая школа Цюриха ETH</p>
+              </a>
+              <a href="javascript:void(0)" title="Швейцарская высшая техническая школа Цюриха ETH" class="partner"><img data-original="svg/uzh.svg" alt="Швейцарская высшая техническая школа Цюриха ETH" title="Швейцарская высшая техническая школа Цюриха ETH" class="partner__logo lazyload">
+                <p class="partner__name">Швейцарская высшая техническая школа Цюриха ETH</p>
+              </a>
+              <a href="javascript:void(0)" title="Швейцарская высшая техническая школа Цюриха ETH" class="partner"><img data-original="svg/uzh.svg" alt="Швейцарская высшая техническая школа Цюриха ETH" title="Швейцарская высшая техническая школа Цюриха ETH" class="partner__logo lazyload">
+                <p class="partner__name">Швейцарская высшая техническая школа Цюриха ETH</p>
+              </a>
+              <a href="javascript:void(0)" title="Швейцарская высшая техническая школа Цюриха ETH" class="partner"><img data-original="svg/uzh.svg" alt="Швейцарская высшая техническая школа Цюриха ETH" title="Швейцарская высшая техническая школа Цюриха ETH" class="partner__logo lazyload">
+                <p class="partner__name">Швейцарская высшая техническая школа Цюриха ETH</p>
+              </a>
+              <a href="javascript:void(0)" title="Швейцарская высшая техническая школа Цюриха ETH" class="partner"><img data-original="svg/uzh.svg" alt="Швейцарская высшая техническая школа Цюриха ETH" title="Швейцарская высшая техническая школа Цюриха ETH" class="partner__logo lazyload">
+                <p class="partner__name">Швейцарская высшая техническая школа Цюриха ETH</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- FEEDBACK-->
+      <div class="feedback-wrapper">
+        <div class="container feedback">
+          <div class="feedback__left">
+            <p class="feedback__invite">Принимаются предложения по инвестированию проектов</p>
+            <p class="feedback__subinvite">Если вас заинтересовала наша деятельность и вы хотите сотрудничать с нами, заполните форму</p>
+          </div>
+          <form class="feedback__form">
+            <div class="feedback__form-left">
+              <input type="text" placeholder="Имя" required spellcheck="true" class="feedback__input">
+              <input type="email" placeholder="Эл. почта" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" spellcheck="true" class="feedback__input">
+              <input type="tel" placeholder="Телефон" required pattern="(+?d[- .]*){7,13}" spellcheck="true" title="Международный, государственный или местный телефонный номер" class="feedback__input">
+              <select required class="feedback__select">
+                <option>Я - пациент</option>
+                <option>Я - врач или специалист</option>
+                <option>Я - потенциальный инвестор</option>
+                <option>Хочу к Вам присоединиться и работать в Нейро-Партнере</option>
+                <option>Другое</option>
+              </select>
+            </div>
+            <div class="feedback__form-right">
+              <textarea placeholder="Сообщение" required spellcheck="true" class="feedback__textarea"></textarea>
+              <button title="Отправить" class="btn btn--all btn--feedback">Отправить</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <!-- FOOTER-->
+    <footer class="footer-wrapper">
+      <div class="container footer">
+        <div class="footer__left">
+          <!-- Menu-->
+          <ul class="footer__menu">
+            <li class="footer__menu-item"><a href="projects.html" title="Проекты" class="footer__menu-link">Проекты</a></li>
+            <li class="footer__menu-item"><a href="javascript:void(0)" title="Нейро" class="footer__menu-link">Нейро</a></li>
+            <li class="footer__menu-item"><a href="javascript:void(0)" title="Консалтинг" class="footer__menu-link">Консалтинг</a></li>
+            <li class="footer__menu-item"><a href="javascript:void(0)" title="Наши работы" class="footer__menu-link">Наши работы</a></li>
+            <li class="footer__menu-item"><a href="javascript:void(0)" title="Сотрудничество" class="footer__menu-link">Сотрудничество</a></li>
+            <li class="footer__menu-item"><a href="contacts.html" title="Контакты" class="footer__menu-link">Контакты</a></li>
+          </ul>
+          <!-- Social icons-->
+          <ul class="footer__social">
+            <li class="footer__social-icon footer__social-icon--tw">
+              <a href="javascript:void(0)" title="Нейро-Партнер в Твитере" class="footer__social-link"></a>
+            </li>
+            <li class="footer__social-icon footer__social-icon--vk">
+              <a href="javascript:void(0)" title="Нейро-Партнер в ВКонтакте" class="footer__social-link"></a>
+            </li>
+            <li class="footer__social-icon footer__social-icon--fb">
+              <a href="javascript:void(0)" title="Нейро-Партнер в Фейсбуке" class="footer__social-link"></a>
+            </li>
+          </ul>
+          <!-- Copyright-->
+          <p class="footer__copyright">&copy; 2015 ООО «НейроПартнер»</p>
+        </div>
+        <div class="footer__right">
+          <p class="footer__phone"><a href="tel:+79818165060" class="footer__phone-link">+7 (981) 81-65-060</a></p>
+          <p class="footer__address">Невский пр-т, дом 1, корпус 5, офис 215, г. Санкт-Петербург, 190000, Россия</p>
+          <div class="mouse"></div>
+        </div>
+      </div>
+      <div class="scripts">
+        <!-- Set JS assets-->
+        <script src="js/vendor/vendor-bundle.min.js" async></script>
+        <script src="js/custom/custom-bundle.min.js" async></script>
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.-->
         <script>
-          /**
-           * Detect browser, browser version and OS
-           *
-           * @class
-           * @name detectBrowser
-           * @version 1.0.0
-           * @author Igor Timohin <timohin.i@gmail.com>
-           * @copyright Igor Timohin 2015
-           *
-           * @example
-           * userBrowserIs = new detectBrowser();
-           * console.log(userBrowserIs.getBrowser()); // chrome
-           * console.log(userBrowserIs.getOS()); // mac
-           * console.log(userBrowserIs.getVersion()); // 45
-           * */
-          var detectBrowser = function()
+          (function(b, o, i, l, e, r)
           {
-            /**
-             * @name detectBrowser#that
-             * @type {detectBrowser}
-             */
-            var that = this;
-            /**
-             * Get browser UserAgent
-             * @var
-             * @type {string}
-             */
-            var _ua = window.navigator.userAgent;
-            /**
-             * Search browser identities in UserAgent string
-             * @constant
-             * @type {{opera: boolean, msie: boolean, msie6: boolean, msie7: boolean, msie8: boolean, msie9: boolean, mozilla: boolean, chrome: boolean, safari: boolean, msie_mobile: boolean, safari_mobile: boolean, opera_mobile: boolean, opera_mini: boolean, search_bot: boolean}}
-             */
-            var browser = {
-              opera: (/opera/i.test(_ua) || /opr/i.test(_ua)),
-              msie: (/msie/i.test(_ua) && !/opera/i.test(_ua) || /trident\//i.test(_ua)),
-              msie6: (/msie 6/i.test(_ua) && !/opera/i.test(_ua)),
-              msie7: (/msie 7/i.test(_ua) && !/opera/i.test(_ua)),
-              msie8: (/msie 8/i.test(_ua) && !/opera/i.test(_ua)),
-              msie9: (/msie 9/i.test(_ua) && !/opera/i.test(_ua)),
-              mozilla: /firefox/i.test(_ua),
-              chrome: (!((/opera/i.test(_ua) || /opr/i.test(_ua))) && /chrome/i.test(_ua)),
-              safari: (!(/chrome/i.test(_ua)) && /webkit|safari|khtml/i.test(_ua)),
-              msie_mobile: /iemobile/i.test(_ua),
-              safari_mobile: /iphone|ipod|ipad/i.test(_ua),
-              opera_mobile: /opera mini|opera mobi/i.test(_ua),
-              opera_mini: /opera mini/i.test(_ua),
-              search_bot: /(yandex|google|stackrambler|aport|slurp|msnbot|bingbot|twitterbot|ia_archiver|facebookexternalhit)/i.test(_ua)
-            };
-            /**
-             * Search browser version identities in UserAgent string
-             * @constant
-             * @type {{version: *}}
-             */
-            var versions = {
-              version: (_ua.match(/.+(?:me|ox|on|rv|it|era|opr|ie|msie)[\/: ]([\d.]+)/) || [0, '0'])[1]
-            };
-            /**
-             * Search OS identities in UserAgent string
-             * @constant
-             * @type {{mac: boolean, iphone: boolean, ipod: boolean, iphone4: boolean, ipod4: boolean, ipad: boolean, android: boolean, bada: boolean, mobile: boolean}}
-             */
-            var os = {
-              mac: /mac/i.test(_ua),
-              iphone: /iphone/i.test(_ua),
-              ipod: /ipod/i.test(_ua),
-              iphone4: /iphone.*OS 4/i.test(_ua),
-              ipod4: /ipod.*OS 4/i.test(_ua),
-              ipad: /ipad/i.test(_ua),
-              android: /android/i.test(_ua),
-              bada: /bada/i.test(_ua),
-              mobile: /iphone|ipod|ipad|opera mini|opera mobi|iemobile|android/i.test(_ua)
-            };
-            /**
-             * Return user browser name
-             * @returns {string}
-             * @name detectBrowser#getBrowser
-             */
-            that.getBrowser = function()
+            b.GoogleAnalyticsObject = l;
+            b[l] || (b[l] = function()
             {
-              for (var browserIs in browser)
-              {
-                if (browser[browserIs] == true)
-                {
-                  return browserIs;
-                }
-              }
-            };
-            /**
-             * Return user browser version
-             * @returns {string}
-             * @name detectBrowser#getVersion
-             */
-            that.getVersion = function()
-            {
-              /**
-               * IE version is not correctly provides and we get 0. If it is so - run second check (else)
-               */
-              if (versions.version != 0)
-              {
-                return versions.version.split('.')[0];
-              }
-              else
-              {
-                var ieVersion = -1; // Return value assumes failure.
-                if (navigator.appName == 'Microsoft Internet Explorer')
-                {
-                  var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
-                  if (re.exec(_ua) != null) ieVersion = parseFloat(RegExp.$1);
-                }
-                return ieVersion;
-              }
-            };
-            /**
-             * Return user OS name
-             * @returns {string}
-             * @name detectBrowser#getOS
-             */
-            that.getOS = function()
-            {
-              for (var osIs in os)
-              {
-                if (os[osIs] == true)
-                {
-                  return osIs;
-                }
-                else
-                {
-                  var _up = window.navigator.platform;
-                  return _up;
-                }
-              }
-            }
-          };
-          var userBrowserIs = new detectBrowser();
-          /**
-           * Check if user browser is MS IE 7 and define document.querySelector & document.querySelectorAll for IE7
-           *
-           * @function
-           * @name ifIE7querySelector
-           * @author Moritz Schmidt https://github.com/Fusselwurm
-           *
-           * @example
-           * ifIE7querySelector();
-           */
-          function ifIE7querySelector()
-          {
-            if (userBrowserIs.getBrowser() == 'msie' && userBrowserIs.getVersion() == '7')
-            {
-              /**
-               * define document.querySelector & document.querySelectorAll for IE7
-               *
-               * Taked from https://gist.github.com/Fusselwurm/4673695
-               *
-               * A not very fast but small hack. The approach is taken from
-               * http://weblogs.asp.net/bleroy/archive/2009/08/31/queryselectorall-on-old-ie-versions-something-that-doesn-t-work.aspx
-               *
-               */
-              (function()
-              {
-                var style = document.createStyleSheet(),
-                  select = function(selector, maxCount)
-                  {
-                    var all = document.all,
-                      l = all.length,
-                      i,
-                      resultSet = [];
-                    style.addRule(selector, "foo:bar");
-                    for (i = 0; i < l; i += 1)
-                    {
-                      if (all[i].currentStyle.foo === "bar")
-                      {
-                        resultSet.push(all[i]);
-                        if (resultSet.length > maxCount)
-                        {
-                          break;
-                        }
-                      }
-                    }
-                    style.removeRule(0);
-                    return resultSet;
-                  };
-                //  be rly sure not to destroy a thing!
-                if (document.querySelectorAll || document.querySelector)
-                {
-                  return;
-                }
-                document.querySelectorAll = function(selector)
-                {
-                  return select(selector, Infinity);
-                };
-                document.querySelector = function(selector)
-                {
-                  return select(selector, 1)[0] || null;
-                };
-              }());
-            }
-          }
-          ifIE7querySelector();
-          /**
-           * Get outdate browser link in AMG modal cap and set up css class to it
-           *
-           * @function
-           * @name getOutDateBrowserLink
-           * @version 1.0.0
-           * @author Igor Timohin <timohin.i@gmail.com>
-           * @requires detectBrowser
-           *
-           * @param {string} browserLinksClass - CSS class off browsers links
-           * @param {string} classToAdd - CSS class, which will be added to user current browsers link
-           * @param {string} dataset - data-attribute of browsers links with browsers name, to compare current user browser and browsers link
-           * @param {string } capWrapper - Modal wrapper
-           * @param {string } classToBodyAdd - CSS class which added to document.body when modal opened
-           *
-           * @example
-           * setUpLink = new getOutDateBrowserLink();
-           */
-          function getOutDateBrowserLink(browserLinksClass, classToAdd, dataset, capWrapper, classToBodyAdd)
-          {
-            browserLinksClass = browserLinksClass || '.amg-outdate__browser';
-            classToAdd = classToAdd || ' amg-outdate__browser--isUsed';
-            dataset = dataset || 'data-browser';
-            capWrapper = capWrapper || 'amg-outdate-wrapper';
-            classToBodyAdd = classToBodyAdd || 'amg-outdate-modal-opened';
-            var browser = new RegExp('chrome|opera|mozilla|msie', 'i'),
-              version = new RegExp('^6{1}|^7{1}|^8{1}|^9{1}|^38{1}|^39{1}|^40{1}');
-            var modalWrapper = document.getElementById(capWrapper),
-              documentBody = document.body;
-            /**
-             * Test browser and version and show modal if needed
-             */
-            if (userBrowserIs.getBrowser() == 'safari' && userBrowserIs.getVersion() == '7')
-            {
-              modalWrapper.style.display = 'block';
-              documentBody.className += (' ' + classToBodyAdd);
-            }
-            else if (browser.test(userBrowserIs.getBrowser()) && version.test(userBrowserIs.getVersion()))
-            {
-              modalWrapper.style.display = 'block';
-              documentBody.className += (' ' + classToBodyAdd);
-            }
-            var browserLinks = document.querySelectorAll(browserLinksClass);
-            /**
-             * Check which browser link mateches current users browser and add special CSS class to it
-             */
-            if (browserLinks.length)
-            {
-              for (var i = 0; i < browserLinks.length; i++)
-              {
-                if (browserLinks[i].getAttribute(dataset) == userBrowserIs.getBrowser())
-                {
-                  browserLinks[i].className += (' ' + classToAdd);
-                }
-              }
-            }
-          }
-          getOutDateBrowserLink();
-          /**
-           * Set current user browser link to browserStack block center
-           *
-           * @function
-           * @name buildBrowserStack
-           * @version 1.0.0
-           * @author Igor Timohin <timohin.i@gmail.com>
-           * @requires getOutDateBrowserLink
-           *
-           * @param {string} browserLinksClass - CSS class to find all browsers link
-           * @param {string} classToCheck - CSS class to check current browser (this class placed by getOutDateBrowserLink.js)
-           * @param {string} browsersStackClass - CSS class to find browsersStack
-           *
-           * @example
-           * setBrowserStack = new buildBrowserStack();
-           */
-          function buildBrowserStack(browserLinksClass, classToCheck, browsersStackClass)
-          {
-            browserLinksClass = browserLinksClass || '.amg-outdate__browser';
-            classToCheck = classToCheck || 'amg-outdate__browser--isUsed';
-            browsersStackClass = browsersStackClass || '.amg-outdate__browsers-stack';
-            var browsersStack = document.querySelector(browsersStackClass);
-            var browsersLinks = document.querySelectorAll(browserLinksClass);
-            if (browsersLinks.length)
-            {
-              /**
-               * Go throw browsersLinks and find link with classToCheck, than cache it position in browserLinksClass
-               */
-              for (i = 0; i < browsersLinks.length; i++)
-              {
-                if (browsersLinks[i].className.match(new RegExp('(\\s|^)' + classToCheck + '(\\s|$)')))
-                {
-                  var browsersLinkPosition = i;
-                }
-              }
-              /**
-               * Cache current position if outdate browser link and IE link (before IE link is in center by default)
-               */
-              var browsersLinksCurrent = browsersLinks[browsersLinkPosition];
-              var browsersLinksIE = browsersLinks[2];
-              /**
-               * Set new position of outdate browser link and IE link
-               */
-              if (browsersLinkPosition < 2)
-              {
-                browsersStack.replaceChild(browsersLinksCurrent, browsersLinksIE);
-                browsersStack.insertBefore(browsersLinksIE, browsersLinks[0])
-              }
-              else if (browsersLinkPosition > 2)
-              {
-                browsersStack.replaceChild(browsersLinksCurrent, browsersLinksIE);
-                browsersStack.appendChild(browsersLinksIE);
-              }
-              else
-              {
-                // do nothing
-              }
-            }
-          }
-          buildBrowserStack();
-          /**
-           * Close AstraMediaGroup outdade browsers modal
-           *
-           * @function
-           * @name closeAMGOutdateBrowserModal
-           * @version 1.0.0
-           * @author Igor Timohin <timohin.i@gmail.com>
-           *
-           * @param {string} cross - Cross icon in head of modal
-           * @param {string} btn - "Thanks" text-btn in modal footer
-           * @param {string} capWrapper - Modal wrapper
-           *
-           * @example
-           * closeAMGOutdateBrowserModal();
-           */
-          function closeAMGOutdateBrowserModal(cross, btn, capWrapper)
-          {
-            cross = cross || "amg-outdate__close";
-            btn = btn || "amg-outdate__btn-thx";
-            capWrapper = capWrapper || "amg-outdate-wrapper";
-            var modalCross = document.getElementById(cross),
-              modalBtn = document.getElementById(btn),
-              modalWrapper = document.getElementById(capWrapper);
-            modalCross.onclick = function()
-            {
-              modalWrapper.style.display = "none";
-            };
-            modalBtn.onclick = function()
-            {
-              modalWrapper.style.display = "none";
-            };
-          }
-          closeAMGOutdateBrowserModal();
+              (b[l].q = b[l].q || []).push(arguments)
+            });
+            b[l].l = +new Date;
+            e = o.createElement(i);
+            r = o.getElementsByTagName(i)[0];
+            e.src = 'https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e, r)
+          }(window, document, 'script', 'ga'));
+          ga('create', 'UA-XXXXX-X', 'auto');
+          ga('send', 'pageview');
         </script>
-      </section>
-    </div>
+        <!-- Yandex.Metrika counter: change  yaCounterXXXXXXXX and id: XXXXXXXX to be your site's ID.-->
+        <script>
+          (function(d, w, c)
+          {
+            (w[c] = w[c] || []).push(function()
+            {
+              try
+              {
+                w.yaCounterXXXXXXXX = new Ya.Metrika(
+                {
+                  id: XXXXXXXX,
+                  clickmap: true,
+                  trackLinks: true,
+                  accurateTrackBounce: true,
+                  webvisor: true,
+                  trackHash: true
+                });
+              }
+              catch (e)
+              {}
+            });
+            var n = d.getElementsByTagName("script")[0],
+              s = d.createElement("script"),
+              f = function()
+              {
+                n.parentNode.insertBefore(s, n);
+              };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/watch.js";
+            if (w.opera == "[object Opera]")
+            {
+              d.addEventListener("DOMContentLoaded", f, false);
+            }
+            else
+            {
+              f();
+            }
+          })(document, window, "yandex_metrika_callbacks");
+        </script>
+        <noscript>
+          <div><img src="https://mc.yandex.ru/watch/24973550" style="position:absolute; left:-9999px;" alt="" /></div>
+        </noscript>
+      </div>
+    </footer>
+    <!--include includes/_outdate-browers-->
   </body>
 
 </html>

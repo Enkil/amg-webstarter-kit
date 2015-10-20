@@ -173,14 +173,14 @@
       /**
        * Check if user browser is MS IE 7 and define document.querySelector & document.querySelectorAll for IE7
        *
-       * @function
+       * @class
        * @name ifIE7querySelector
        * @author Moritz Schmidt https://github.com/Fusselwurm
        *
        * @example
        * ifIE7querySelector();
        */
-      function ifIE7querySelector()
+      var ifIE7querySelector = function()
       {
         if (userBrowserIs.getBrowser() == 'msie' && userBrowserIs.getVersion() == '7')
         {
@@ -237,7 +237,7 @@
       /**
        * Get outdate browser link in AMG modal cap and set up css class to it
        *
-       * @function
+       * @class
        * @name getOutDateBrowserLink
        * @version 1.0.0
        * @author Igor Timohin <timohin.i@gmail.com>
@@ -252,7 +252,7 @@
        * @example
        * setUpLink = new getOutDateBrowserLink();
        */
-      function getOutDateBrowserLink(browserLinksClass, classToAdd, dataset, capWrapper, classToBodyAdd)
+      var getOutDateBrowserLink = function(browserLinksClass, classToAdd, dataset, capWrapper, classToBodyAdd)
       {
         browserLinksClass = browserLinksClass || '.amg-outdate__browser';
         classToAdd = classToAdd || ' amg-outdate__browser--isUsed';
@@ -295,7 +295,7 @@
       /**
        * Set current user browser link to browserStack block center
        *
-       * @function
+       * @class
        * @name buildBrowserStack
        * @version 1.0.0
        * @author Igor Timohin <timohin.i@gmail.com>
@@ -306,9 +306,9 @@
        * @param {string} browsersStackClass - CSS class to find browsersStack
        *
        * @example
-       * setBrowserStack = new buildBrowserStack();
+       * buildBrowserStack();
        */
-      function buildBrowserStack(browserLinksClass, classToCheck, browsersStackClass)
+      var buildBrowserStack = function(browserLinksClass, classToCheck, browsersStackClass)
       {
         browserLinksClass = browserLinksClass || '.amg-outdate__browser';
         classToCheck = classToCheck || 'amg-outdate__browser--isUsed';
@@ -350,38 +350,63 @@
             // do nothing
           }
         }
-      }
+      };
       buildBrowserStack();
       /**
        * Close AstraMediaGroup outdade browsers modal
        *
-       * @function
+       * @class
        * @name closeAMGOutdateBrowserModal
        * @version 1.0.0
        * @author Igor Timohin <timohin.i@gmail.com>
        *
-       * @param {string} cross - Cross icon in head of modal
-       * @param {string} btn - "Thanks" text-btn in modal footer
-       * @param {string} capWrapper - Modal wrapper
+       * @param {string} cross - CSS class of Cross icon in head of modal
+       * @param {string} btn - CSS class of "Thanks" text-btn in modal footer
+       * @param {string} capWrapper - CSS class of Modal wrapper
+       * @param {string} classFromBodyRemove - CSS class, which need to remobe from body tag when close modal
        *
        * @example
        * closeAMGOutdateBrowserModal();
        */
-      function closeAMGOutdateBrowserModal(cross, btn, capWrapper)
+      var closeAMGOutdateBrowserModal = function(cross, btn, capWrapper, classFromBodyRemove)
       {
         cross = cross || "amg-outdate__close";
         btn = btn || "amg-outdate__btn-thx";
         capWrapper = capWrapper || "amg-outdate-wrapper";
+        classFromBodyRemove = classFromBodyRemove || 'amg-outdate-modal-opened';
+        /**
+         * @param {string} modalCross - Cross icon in head of modal
+         * @param {string} modalBtn - "Thanks" text-btn in modal footer
+         * @param {string} modalWrapper - Modal wrapper
+         * @param {string} documentBody - body html tag
+         * @param {RegExp} removeClassRegExp - RegExp for removing CSS class
+         */
         var modalCross = document.getElementById(cross),
           modalBtn = document.getElementById(btn),
-          modalWrapper = document.getElementById(capWrapper);
+          modalWrapper = document.getElementById(capWrapper),
+          documentBody = document.body,
+          removeClassRegExp = new RegExp("(^|\\s)" + classFromBodyRemove + "(\\s|$)", "g");
+        // Hide modal and remove CSS class from body by click on cross
         modalCross.onclick = function()
         {
           modalWrapper.style.display = "none";
+          documentBody.className = documentBody.className.replace(removeClassRegExp, "$1").replace(/\s+/g, " ").replace(/(^ | $)/g, "")
         };
+        // Hide modal and remove CSS class from body by click on "Thanx" text-button
         modalBtn.onclick = function()
         {
           modalWrapper.style.display = "none";
+          documentBody.className = documentBody.className.replace(removeClassRegExp, "$1").replace(/\s+/g, " ").replace(/(^ | $)/g, "")
+        };
+        // Hide modal and remove CSS class from body by pressing Esc keyboard button
+        document.onkeydown = function(event)
+        {
+          events = event || window.event;
+          if (event.keyCode == 27)
+          {
+            modalWrapper.style.display = "none";
+            documentBody.className = documentBody.className.replace(removeClassRegExp, "$1").replace(/\s+/g, " ").replace(/(^ | $)/g, "")
+          }
         };
       }
       closeAMGOutdateBrowserModal();
