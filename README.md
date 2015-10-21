@@ -1,2 +1,1 @@
-# NeiroPartner Front-End
-
+## Project readme

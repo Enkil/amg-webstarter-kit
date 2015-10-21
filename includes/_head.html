@@ -14,10 +14,10 @@
   
   -->
   <!-- Set preload resources (https://w3c.github.io/resource-hints/)-->
-  <!--link(rel="preload" href="css/fonts/roboto/bold/roboto-bold-webfont.woff" as="font")-->
-  <!--link(rel="preload" href="css/fonts/roboto/light/roboto-light-webfont.woff" as="font")-->
-  <!--link(rel="preload" href="css/fonts/roboto/medium/roboto-medium-webfont.woff" as="font")-->
-  <!--link(rel="preload" href="css/fonts/roboto/regular/roboto-regular-webfont.woff" as="font")-->
+  <link rel="preload" href="css/fonts/roboto/bold/roboto-bold-webfont.woff" as="font" />
+  <link rel="preload" href="css/fonts/roboto/light/roboto-light-webfont.woff" as="font" />
+  <link rel="preload" href="css/fonts/roboto/medium/roboto-medium-webfont.woff" as="font" />
+  <link rel="preload" href="css/fonts/roboto/regular/roboto-regular-webfont.woff" as="font" />
   <!-- Set prerender resources (https://w3c.github.io/resource-hints/)
   link(rel="prerender" href="//example.com/next-page.html")
   
@@ -96,7 +96,7 @@
   
   -->
   <!-- Set external CSS libraries
-  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
+  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet')
   
   -->
   <!-- Set JS that must be in <head>-->
@@ -107,7 +107,8 @@
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <!-- Async load CSS-->
   <script>
-    /* loadCSS: load a CSS file asynchronously.
+    /*!
+     loadCSS: load a CSS file asynchronously.
      [c]2015 @scottjehl, Filament Group, Inc.
      Licensed MIT
      */
