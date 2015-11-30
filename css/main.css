@@ -372,6 +372,113 @@ td, th {
     padding : 0;
 }
 
+/* Slider */
+.slick-slider {
+    position : relative;
+
+    display : block;
+    box-sizing : border-box;
+
+    -webkit-user-select : none;
+       -moz-user-select : none;
+        -ms-user-select : none;
+            user-select : none;
+
+     -khtml-user-select : none;
+    -webkit-tap-highlight-color : transparent; 
+    -ms-touch-action : pan-y;
+        touch-action : pan-y;
+    -webkit-touch-callout : none;
+}
+
+.slick-list {
+    position : relative;
+
+    display : block;
+    margin : 0;
+    padding : 0; 
+    overflow : hidden;
+}
+
+.slick-list:focus {
+    outline : none;
+}
+
+.slick-list.dragging {
+    cursor : pointer;
+    cursor : hand;
+}
+
+.slick-slider .slick-track, .slick-slider .slick-list {
+    -webkit-transform : translate3d(0, 0, 0);
+        -ms-transform : translate3d(0, 0, 0);
+            transform : translate3d(0, 0, 0);
+}
+
+.slick-track {
+    position : relative;
+    top : 0;
+    left : 0;
+
+    display : block;
+}
+
+.slick-track:before, .slick-track:after {
+    content : ""; 
+
+    display : table;
+}
+
+.slick-track:after {
+    clear : both;
+}
+
+.slick-loading .slick-track {
+    visibility : hidden;
+}
+
+.slick-slide {
+    display : none;
+    float : left;
+    height : 100%;
+    min-height : 1px;
+}
+
+[dir="rtl"] .slick-slide {
+    float : right;
+}
+
+.slick-slide img {
+    display : block;
+}
+
+.slick-slide.slick-loading img {
+    display : none;
+}
+
+.slick-slide.dragging img {
+    pointer-events : none;
+}
+
+.slick-initialized .slick-slide {
+    display : block;
+}
+
+.slick-loading .slick-slide {
+    visibility : hidden;
+}
+
+.slick-vertical .slick-slide {
+    display : block;
+    height : auto;
+
+    border : 1px solid transparent;
+}
+
+.slick-arrow.slick-hidden {
+    display : none;
+}
+
 /**
 *  Include custom CSS files
 **/
@@ -437,54 +544,41 @@ The `sprites` mixin generates identical output to the CSS template
 @include sprites($spritesheet-sprites);
 */
 @font-face {
-    font-family : "Roboto-Regular";
-    src : url("fonts/roboto/regular/roboto-regular-webfont.eot?#iefix") format("embedded-opentype"), local("☺"), url("fonts/roboto/regular/roboto-regular-webfont.woff") format("woff"), url("fonts/roboto/regular/roboto-regular-webfont.ttf") format("truetype"), url("fonts/roboto/regular/roboto-regular-webfont.svg#Roboto-Regular") format("svg"); 
-    src : url("fonts/roboto/regular/roboto-regular-webfont.eot"), local("☺");
+    font-family : "Ek-Mukta-Light";
+    src : url("fonts/ek-mukta/light/ekkukta-light-webfont.eot?#iefix") format("embedded-opentype"), local("☺"), url("fonts/ek-mukta/light/ekkukta-light-webfont.woff") format("woff"), url("fonts/ek-mukta/light/ekkukta-light-webfont.ttf") format("truetype"), url("fonts/ek-mukta/light/ekkukta-light-webfont.svg#Ek-Mukta-Light") format("svg"); 
+    src : url("fonts/ek-mukta/light/ekkukta-light-webfont.eot"), local("☺");
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
     @font-face {
-        font-family : "Roboto-Regular";
-        src : url("fonts/roboto/regular/roboto-regular-webfont.svg#Roboto-Regular") format("svg");
+        font-family : "Ek-Mukta-Light";
+        src : url("fonts/ek-mukta/light/ekkukta-light-webfont.svg#Ek-Mukta-Light") format("svg");
     }
 }
 
 @font-face {
-    font-family : "Roboto-Bold";
-    src : url("fonts/roboto/bold/roboto-bold-webfont.eot?#iefix") format("embedded-opentype"), local("☺"), url("fonts/roboto/bold/roboto-bold-webfont.woff") format("woff"), url("fonts/roboto/bold/roboto-bold-webfont.ttf") format("truetype"), url("fonts/roboto/bold/roboto-bold-webfont.svg#Roboto-Bold") format("svg"); 
-    src : url("fonts/roboto/bold/roboto-bold-webfont.eot"), local("☺");
+    font-family : "Ek-Mukta-Bold";
+    src : url("fonts/ek-mukta/bold/ekkukta-bold-webfont.eot?#iefix") format("embedded-opentype"), local("☺"), url("fonts/ek-mukta/bold/ekkukta-bold-webfont.woff") format("woff"), url("fonts/ek-mukta/bold/ekkukta-bold-webfont.ttf") format("truetype"), url("fonts/ek-mukta/bold/ekkukta-bold-webfont.svg#Ek-Mukta-Bold") format("svg"); 
+    src : url("fonts/ek-mukta/bold/ekkukta-bold-webfont.eot"), local("☺");
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
     @font-face {
-        font-family : "Roboto-Bold";
-        src : url("fonts/roboto/bold/roboto-bold-webfont.svg#Roboto-Bold") format("svg");
+        font-family : "Ek-Mukta-Bold";
+        src : url("fonts/ek-mukta/bold/ekkukta-bold-webfont.svg#Ek-Mukta-Bold") format("svg");
     }
 }
 
 @font-face {
-    font-family : "Roboto-Light";
-    src : url("fonts/roboto/light/roboto-light-webfont.eot?#iefix") format("embedded-opentype"), local("☺"), url("fonts/roboto/light/roboto-light-webfont.woff") format("woff"), url("fonts/roboto/light/roboto-light-webfont.ttf") format("truetype"), url("fonts/roboto/light/roboto-light-webfont.svg#Roboto-Light") format("svg"); 
-    src : url("fonts/roboto/light/roboto-light-webfont.eot"), local("☺");
+    font-family : "Ek-Mukta-Medium";
+    src : url("fonts/ek-mukta/medium/ekkukta-medium-webfont.eot?#iefix") format("embedded-opentype"), local("☺"), url("fonts/ek-mukta/medium/ekkukta-medium-webfont.woff") format("woff"), url("fonts/ek-mukta/medium/ekkukta-medium-webfont.ttf") format("truetype"), url("fonts/ek-mukta/medium/ekkukta-medium-webfont.svg#Ek-Mukta-Medium") format("svg"); 
+    src : url("fonts/ek-mukta/medium/ekkukta-medium-webfont.eot"), local("☺");
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
     @font-face {
-        font-family : "Roboto-Light";
-        src : url("fonts/roboto/light/roboto-light-webfont.svg#Roboto-Light") format("svg");
-    }
-}
-
-@font-face {
-    font-family : "Roboto-Medium";
-    src : url("fonts/roboto/medium/roboto-medium-webfont.eot?#iefix") format("embedded-opentype"), local("☺"), url("fonts/roboto/medium/roboto-medium-webfont.woff") format("woff"), url("fonts/roboto/medium/roboto-medium-webfont.ttf") format("truetype"), url("fonts/roboto/medium/roboto-medium-webfont.svg#Roboto-Medium") format("svg"); 
-    src : url("fonts/roboto/medium/roboto-medium-webfont.eot"), local("☺");
-}
-
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-    @font-face {
-        font-family : "Roboto-Medium";
-        src : url("fonts/roboto/medium/roboto-medium-webfont.svg#Roboto-Medium") format("svg");
+        font-family : "Ek-Mukta-Medium";
+        src : url("fonts/ek-mukta/medium/ekkukta-medium-webfont.svg#Ek-Mukta-Medium") format("svg");
     }
 }
 
@@ -493,204 +587,261 @@ html {
     line-height : 0;
 }
 
-body {
-    font-weight : normal;
-    font-style : normal; 
-
-    font-family : "Roboto-Regular", sans-serif;
+.header {
+    box-shadow : inset 0 9px 6px rgba(0, 0, 0, .04);
 }
+.header__top {
+    -webkit-justify-content : space-between;
+            justify-content : space-between; 
 
-[class^="amg-"] {
-    box-sizing : border-box;
+    -webkit-box-pack : justify;
+    -ms-flex-pack : justify;
 }
+.header__logo {
+    position : relative;
+    left : -53px; 
 
-.amg-outdate-modal-opened {
-    height : 100% !important;
-    overflow : hidden;
+    width : 336px;
+    height : 152px;
 }
-
-.amg-outdate-wrapper {
-    position : absolute;
-    top : 0;
-    right : 0; 
-    bottom : 0;
-    left : 0;
-    z-index : 10000;
-
-    display : none;
-    width : 100%;
-    height : 100%;
-    min-height : 700px;
-
-    background-color : #808080;
-}
-
-.amg-outdate {
-    position : absolute;
-    top : 0;
-    right : 0;
-    bottom : 0;
-    left : 0;
-
-    width : 960px;
-    height : 600px;
-    margin : auto;
-    padding-top : 56px;
-    padding-right : 95px;
-    padding-bottom : 50px; 
-    padding-left : 85px;
-
-    background-color : #fff;
-    background-image : url("../img/amg-outdate-bg-car.png");
-    background-repeat : no-repeat;
-    background-size : 960px 600px;
-}
-.amg-outdate__title {
-    margin-top : 0;
-    margin-bottom : 45px; 
-
-    font-weight : normal;
-    font-size : 40px;
-    line-height : 54px;
-    color : #404041;
-    text-transform : uppercase;
-    font-style : normal;
-    letter-spacing : .02em;
-
-    font-family : "Roboto-Regular", sans-serif;
-}
-.amg-outdate__title-more {
-    color : #e62d2a;
-}
-.amg-outdate__text {
-    margin-top : 0; 
-
-    font-weight : normal;
-    font-size : 13px;
-    line-height : 17px;
-    font-style : normal;
-    letter-spacing : .03em;
-
-    font-family : "Roboto-Thin", sans-serif;
-}
-.amg-outdate__text:last-child {
-    margin-bottom : 0;
-}
-.amg-outdate__close {
-    position : absolute;
-    top : 20px;
-    right : 20px;
-
-    width : 23px;
-    height : 23px;
-    margin : 0;
-    padding : 0;
-
-    line-height : 1;
-
-    background-color : transparent;
-    background-image : url("../img/amg-outdate-cross.png");
-    background-repeat : no-repeat;
-    background-size : 23px 23px; 
-    border : 0;
-    outline : none;
-    cursor : pointer;
-
-    -webkit-appearance : none;
-       -moz-appearance : none;
-            appearance : none;
-}
-.amg-outdate__close .amg-cross {
-    -webkit-transition : all .5s ease;
-            transition : all .5s ease;
-
-    fill : #e62d2a;
-}
-.amg-outdate__close:hover .amg-cross {
-    fill : #000;
-}
-.amg-outdate__close:hover {
-    background-image : url("../img/amg-outdate-cross--hover.png");
-}
-.amg-outdate__browsers-stack {
-    position : relative; 
-
-    display : table;
-    width : 100%;
-}
-.amg-outdate__browser {
-    display : table-cell;
-    width : 124px;
-    height : 144px;
-    padding-top : 20px;
-    padding-right : 25px;
-    padding-bottom : 20px;
-    padding-left : 25px;
-
-    font-size : 0;
-    vertical-align : middle; 
-    text-align : center;
-    text-decoration : none;
-
-    -webkit-transition : all .5s ease;
-            transition : all .5s ease;
-}
-.amg-outdate__browser:hover {
-    box-shadow : 0 0 20px #cfcfcf;
-}
-.amg-outdate__browser--isUsed {
-    position : relative; 
-
-    width : 168px;
-    height : 188px;
-}
-.amg-outdate__browser--isUsed .amg-outdate__browser-logo {
-    width : 113px;
-    height : 108px;
-}
-.amg-outdate__browser-logo {
-    width : 77px;
-    height : 77px;
-    margin : 0 auto;
+.header__logo-img {
+    width : 336px;
+    height : 152px;
 
     -o-object-fit : contain;
        object-fit : contain;
 }
-.amg-outdate__browser-name {
-    display : inline-block; 
-    margin-top : 10px;
+.header__text {
+    padding-top : 28px; 
+
+    text-align : right;
+}
+.header__date {
+    margin-top : 0;
+    margin-bottom : 15px;
 
     font-weight : normal;
-    font-size : 13px;
-    line-height : 18px;
-    color : #373839;
+    font-size : 24px;
+    line-height : 24px;
+    color : #069; 
     font-style : normal;
 
-    font-family : "Roboto-Light", sans-serif;
+    font-family : "Ek-Mukta-Medium", sans-serif;
 }
-.amg-outdate__btn-thx {
+.header__title {
+    margin-top : 0;
+    margin-bottom : 10px; 
+
+    font-weight : normal;
+    font-size : 50px;
+    line-height : 50px;
+    color : #036;
+    font-style : normal;
+
+    font-family : "Ek-Mukta-Medium", sans-serif;
+}
+.header__slogan {
+    margin : 0; 
+
+    font-weight : normal;
+    font-size : 25px;
+    line-height : 25px;
+    color : #069;
+    font-style : normal;
+
+    font-family : "Ek-Mukta-Medium", sans-serif;
+}
+
+.top-menu {
+    margin-top : 25px; 
+    padding-top : 20px;
+    padding-bottom : 20px;
+
+    background-color : #036;
+    box-shadow : inset 0 9px 6px rgba(0, 0, 0, .04);
+}
+.top-menu__wrapper {
+    display : -webkit-box;
+    display : -webkit-flex;
+    display : -ms-flexbox;
+    display :         flex;
+    -webkit-flex-wrap : wrap;
+            flex-wrap : wrap;
+    -webkit-justify-content : space-between;
+            justify-content : space-between;
+    padding : 0 15px; 
+
+    -webkit-box-pack : justify;
+    -ms-flex-pack : justify;
+        -ms-flex-wrap : wrap;
+}
+.top-menu__block {
+    -webkit-flex-grow : 1;
+            flex-grow : 1; 
+
+    -webkit-box-flex : 1;
+    -ms-flex-positive : 1;
+}
+.top-menu__list {
+    display : -webkit-box;
+    display : -webkit-flex;
+    display : -ms-flexbox;
+    display :         flex;
+    -webkit-flex-wrap : wrap;
+            flex-wrap : wrap;
+    width : 100%; 
+    padding : 0;
+
+        -ms-flex-wrap : wrap;
+}
+.top-menu__item {
+    display : inline-block;
+}
+.top-menu__link {
+    display : block;
+
+    font-weight : normal;
+    font-weight : bold;
+    font-size : 15px;
+    line-height : 40px;
+    color : #fff;
+    text-transform : uppercase;
+    text-decoration : none; 
+    font-style : normal;
+
+    -webkit-transition : all .5s linear;
+            transition : all .5s linear;
+
+    font-family : "Ek-Mukta-Bold", sans-serif;
+}
+.top-menu__link:hover {
+    color : #069;
+}
+.top-menu__link:active {
+    color : #069;
+}
+
+.container {
+    display : -webkit-box;
+    display : -webkit-flex;
+    display : -ms-flexbox;
+    display :         flex;
+    -webkit-flex-wrap : wrap;
+            flex-wrap : wrap;
+    width : 1200px;
+    margin : 0 auto; 
+
+        -ms-flex-wrap : wrap;
+}
+
+.top-slider {
     position : relative; 
 
+    width : 100vw;
+}
+.top-slider__slide {
+    width : 100vw;
+    height : 715px;
+
+    -o-object-fit : cover;
+       object-fit : cover;
+}
+.top-slider__btn {
+    position : absolute;
+    right : 0; 
+    bottom : 210px;
+    left : 0;
+
     display : block;
+    box-sizing : border-box;
+    width : 370px;
+    height : 80px;
     margin : 0 auto;
-    margin-top : 17px;
 
     font-weight : normal;
-    font-size : 14px;
-    line-height : 18px;
-    color : #e62d2a;
+    font-weight : bold;
+    font-size : 24px;
+    line-height : 80px;
+    text-align : center;
+    color : #fff;
     text-transform : uppercase;
+    text-decoration : none;
     font-style : normal;
 
-    background-color : transparent;
-    border : 0;
-    outline : none;
+    background : -webkit-linear-gradient(top, #f90, #f60);
+    background :         linear-gradient(to bottom, #f90, #f60);
+    border : 1px solid #fff;
+    border-radius : 35px;
 
-    font-family : "Roboto-Bold", sans-serif;
+    font-family : "Ek-Mukta-Bold", sans-serif;
 }
-.amg-outdate__btn-thx:hover {
-    color : #414041; 
+.top-slider__btn:hover {
+    background : -webkit-linear-gradient(top, #930, #c60);
+    background :         linear-gradient(to bottom, #930, #c60);
+}
+.top-slider__btn:active {
+    border : 2px solid #fff;
+}
+.top-slider__btn-down {
+    position : absolute;
+    right : 0;
+    bottom : -60px; 
+    left : 0;
 
-    -webkit-transition : all .5s ease;
-            transition : all .5s ease;
+    display : block;
+    width : 120px;
+    height : 120px;
+    margin : 0 auto;
+
+    background-color : #fff;
+    border-radius : 50%;
+}
+.top-slider__btn-down:before {
+    content : "";
+    position : absolute;
+    top : 28px; 
+    right : 0;
+    left : 0;
+
+    display : inline-block;
+    width : 39px;
+    height : 23px;
+    margin : 0 auto;
+
+    background-image : url(../img/sprite/png-sprite.png);
+    background-position : 0 0;
+}
+.top-slider .slick-dots {
+    position : absolute;
+    right : 0;
+    bottom : 160px;
+    left : 0;
+
+    margin : 0 auto;
+    padding : 0;
+
+    text-align : center;
+}
+.top-slider .slick-dots li {
+    display : inline-block;
+    width : 15px;
+    height : 15px;
+    margin : 0 5px;
+
+    background-color : #fff;
+    border-radius : 50%;
+    cursor : pointer; 
+    opacity : .3;
+
+    -webkit-transition : all .5s linear;
+            transition : all .5s linear;
+}
+.top-slider .slick-dots li:hover {
+    opacity : 1;
+}
+.top-slider .slick-dots li.slick-active {
+    opacity : 1;
+}
+.top-slider .slick-dots button {
+    display : none;
 }

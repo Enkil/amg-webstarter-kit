@@ -14,5 +14,15 @@ window.onload = function(){
         elements_selector: ".lazyload", // img
         data_srcset: "original" // original-set
     });
+
+
+    // Set up Slick carousel to index top slider
+    $('.js-top-slider').slick({
+        lazyLoad: 'progressive',
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: true,
+        arrows: false
+    });
 };
 
