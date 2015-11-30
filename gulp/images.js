@@ -3,6 +3,7 @@ var gulp = require('gulp'),
     config = require('./config'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
+    jpegoptim = require('imagemin-jpegoptim'),
     newer = require('gulp-newer'),
     gutil = require('gulp-util'),
     browserSync = require("browser-sync"),
@@ -20,7 +21,7 @@ gulp.task('images', function () {
         .pipe(imagemin({
             progressive: true,
             optimizationLevel: 7,
-            use: [pngquant()],
+            use: [pngquant(),jpegoptim({max: 61})],
             interlaced: true
         }))
         .pipe(gulp.dest(config.pathTo.Build.Images))

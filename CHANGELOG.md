@@ -1,3 +1,7 @@
+### 1.3.7 (November 30, 2015)
+
+* Add imagemin-jpegoptim plugin to "images" gulp task
+
 ### 1.3.6 (October 21, 2015)
 
 * Replace Yandex.Metrika and Google Analytics code from _footer.jade to separate jade-snippets and include them in _footer.jade
