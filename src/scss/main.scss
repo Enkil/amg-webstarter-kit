@@ -9,13 +9,10 @@
 // Include custom CSS files
 // ========================
 
-@import "includes/variables";
-@import "includes/png-sprite";
-@import "includes/svg-sprite";
-@import "includes/typography";
-@import "includes/outdate-browsers";
-
-// Include Mixins
-// ==============
-
+@import "components/variables";
 @import "mixins/font-face";
+@import "components/png-sprite";
+@import "components/svg-sprite";
+@import "components/typography";
+@import "components/outdate-browsers";
+
